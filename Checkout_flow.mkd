@@ -1,0 +1,46 @@
+<h1>Overview</h1>
+
+<table>
+<tr><td width="40px">V3</td><td>Update: Jan 2016</td></tr>
+</table>
+
+Here you can find documentation to help you start integrating with Musement. Explore step by step our events catalog and easily set up the checkout flow into your app or website.
+
+The Musement API gives you a set of endpoints to GET all the information about our products such as locations, opening hours, availability, prices, discounts and more. Also your application can create and manage carts, tickets and orders and make payments.
+
+
+
+<h2>Navigate the catalog</h2>
+You can reach an event calling one of these endpoints through the GET method:
+* /api/v3/categories/{id}/events
+* /api/v3/editorial-categories/{id}/events
+* /api/v3/verticals/{id}/events
+* /api/v3/venues/{id}/events
+* /api/v3/cities/{id}/events
+* /api/v3/countries/{id}/events
+* /api/v3/events/search
+
+Once you have chosen a specific event you can call it's details, informations and options using this endpoint:
+* /api/v3/events/{id}
+
+You will GET a response like [this](/event_response).
+
+<h2>Checkout flow</h2>
+To build a complete event page you will need, in addition to what you received from the last endpoint, also informations about availabiliy and prices. The goal is to have the user go through a funnel of options, starting from a generic event and choosing a specific date, hour and price option. At the end of the way you will GET a specific "seatprice".
+The <strong>seatprice</strong> is a Musement entity. 
+Each of these is specific for a single event in a single time span for a single option (Adult, Child...).
+So every event can have multiple dates. Every date can have multiple seatprices.
+
+Musement events have three different kind of tickets
+
+<h4>Dates</h4>
+First step is to GET the available dates from this endpoint:
+<code>/api/v3/events/{id}/dates?date_from=YYYY-MM-DD&date_to=YYYY-MM-DD</code>
+
+<strong>Remember to pass the params "date_from" and "date_to". If you don't pass them the API will only search if today is available or not.</strong>
+
+<h4>Hours & Seatprices</h4>
+Having a specific date related to an event you need to call hours and seatprices associated from this endpoint:
+<code>/api/v3/events/{id}/dates/YYYY-MM-DD</code>
+
+For each "datetime" in the response you have an array of "seats" each with a unique "id", a "price_tag" that is the user friendly name for the seatprice, to be displayed in the frontend (Adult, Child...), the "retail price" and other information about the specific seatprice.
