@@ -44,3 +44,23 @@ Having a specific date related to an event you need to call hours and seatprices
 <code>/api/v3/events/{id}/dates/YYYY-MM-DD</code>
 
 For each "datetime" in the response you have an array of "seats" each with a unique "id", a "price_tag" that is the user friendly name for the seatprice, to be displayed in the frontend (Adult, Child...), the "retail price" and other information about the specific seatprice.
+
+<h4>Create cart</h4>
+Once you have chosen one or more seatprices you need to POST all the information about the <strong>"tickets"</strong> and the <strong>"customer"</strong> to create a cart. Also the <strong>"discount_code"</strong>, if the user has one, should be passed in this call.
+
+<code>/api/v3/carts</code>
+
+Each ticket is an array and it's defined by "product" "quantity" and "metadata". The product is the "id" of the "seatprice" and of course the user can buy different quantities of the same product. Many tickets can be inserted in the same cart.
+
+"customer" is another array that contains all the information about who is buying the tickets. They can be the data of the logged user, if any, or they can be requested at the moment of the purchase, just before the POST. These are not specifically the info about who will use the tickets, but simply about the buyer. In some cases though there can be requested also some data about each "passenger" of the tickets.
+
+<strong>It is important to check the "status" of each ticket in the response you receive from the POST. Only if all the statuses are "PREBOOK_OK" you can go straight to the next step.</strong>
+
+The cart is the last step before payment and here you can still modify tickets and quantities. In the response of the POST call you get back also a cart id wich can be used in a further PUT call <code>/api/v3/carts/{id}</strong> to update the cart.
+
+<h4>Payment</h4>
+At the time you have defined your cart you can create an order and proceed to the payment. First you need to POST your "cart_id" to obtain your order.
+
+<code>/api/v3/orders</code>
+
+Then with the "order_id" received from the previous response you can proceed to the payment calls. 
