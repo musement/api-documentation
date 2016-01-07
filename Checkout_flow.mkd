@@ -56,11 +56,22 @@ Each ticket is an array and it's defined by "product" "quantity" and "metadata".
 
 <strong>It is important to check the "status" of each ticket in the response you receive from the POST. Only if all the statuses are "PREBOOK_OK" you can go straight to the next step.</strong>
 
-The cart is the last step before payment and here you can still modify tickets and quantities. In the response of the POST call you get back also a cart id wich can be used in a further PUT call <code>/api/v3/carts/{id}</strong> to update the cart.
+The cart is the last step before payment and here you can still modify tickets and quantities. In the response of the POST call you get back also a cart id wich can be used in a further PUT call <code>/api/v3/carts/{id}</code> to update the cart.
 
-<h4>Payment</h4>
+<h4>Payment via Braintree</h4>
 At the time you have defined your cart you can create an order and proceed to the payment. First you need to POST your "cart_id" to obtain your order.
 
 <code>/api/v3/orders</code>
 
 Then with the "order_id" received from the previous response you can proceed to the payment calls. 
+
+At first you need to obtain a Braintree Token calling this endpoint:
+
+<code>POST /api/v3/payments/braintree/token</code>
+
+Once you have the token you have to POST the payment:
+
+<code>/api/v3/payments/braintree/payment</code>
+
+In this call you need to pass "nonce" that is the token previously obtained, the "orderId" you got at the moment you created the order and "clientIp". The last one is used for logging purposes.
+Once you get back the status 200 from the payment the entire process is ended.
