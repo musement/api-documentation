@@ -43,9 +43,8 @@ GET /api/v3/events/{id}/dates?date_from=YYYY-MM-DD&date_to=YYYY-MM-DD
 <strong>NOTE:</strong>
 
 <blockquote>
-
- - If you don't pass `date_from` and `date_to` the search will be performed only on the current day.
- - If you pass only `date_from` the search will be performed only on the specified day.
+ <li> If you don't pass `date_from` and `date_to` the search will be performed only on the current day.</li>
+ <li> If you pass only `date_from` the search will be performed only on the specified day.</li>
 </blockquote>
 
 <h4>Hours & Seatprices</h4>
@@ -63,8 +62,9 @@ Once you have chosen one or more seatprices you need to `POST` all the informati
 
 <code>
 POST /api/v3/carts
+</code>
 
-{
+<pre><code>{
     "tickets":[
         {
             "product": {
@@ -82,7 +82,7 @@ POST /api/v3/carts
       }
     }
 }
-</code>
+</code></pre>
 
 <strong>Note:</strong>
 
@@ -104,11 +104,12 @@ First you need to create the order by calling:
 
 <code>
 POST /api/v3/orders
+</code>
 
-{
+<pre><code>{
   "cart_id" : 123456
 }
-</code>
+</code></pre>
 
 Then with the `order_id` received from the previous response you can proceed to the payment calls. 
 
@@ -122,12 +123,13 @@ Once you have the token you have to call:
 
 <code>
 POST /api/v3/payments/braintree/payment
+</code>
 
-{
+<pre><code>{
   "nonce" : 98765,
   "order_id" : 123456
 }
-</code>
+</code></pre>
 
 In this call you need to pass `nonce` that is the token previously obtained, the `order_id` you got at the moment you created the order.
 
