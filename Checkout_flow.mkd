@@ -27,7 +27,7 @@ You will GET a response like [this](/event_response).
 
 <h2>Checkout flow</h2>
 To build a complete event page you will need, in addition to what you received from the last endpoint, also informations about availabiliy and prices. The goal is to have the user go through a funnel of options, starting from a generic event and choosing a specific date, hour and price option. At the end of the way you will GET a specific "seatprice".
-The <strong>seatprice</strong> is a Musement entity.
+The <strong>seatprice</strong> is a Musement entity. 
 Each of these is specific for a single event in a single time span for a single option (Adult, Child...).
 So every event can have multiple dates. Every date can have multiple seatprices.
 
@@ -97,8 +97,10 @@ Remember to check the "status" of each ticket in the response you receive from t
 
 The cart is the last step before payment and here you can still modify tickets and quantities.
 
-<h4>Create the order</h4>
-At the time you have defined your cart you can create an order by calling:
+<h4>Payment via Braintree</h4>
+At the time you have defined your cart you can create an order and proceed to the payment. To close a payment you need 2 steps.
+
+First you need to create the order by calling:
 
 <code>
 POST /api/v3/orders
@@ -109,10 +111,7 @@ POST /api/v3/orders
 }
 </code></pre>
 
-This POST will return the order_id that you will need to use in the following step.
-
-<h4>Payment via Braintree</h4>
-To close a payment you need 2 steps. With the `order_id` received from the previous response you can proceed to the payment calls.
+Then with the `order_id` received from the previous response you can proceed to the payment calls. 
 
 At first you need to obtain a `Braintree` Token calling this endpoint:
 
@@ -135,15 +134,3 @@ POST /api/v3/payments/braintree/payment
 In this call you need to pass `nonce` that is the token previously obtained, the `order_id` you got at the moment you created the order.
 
 Once you get back the status 200 from the payment the entire process is ended.
-
-<h4>NoPayment flow</h4>
-If the order for some reason has a zero amount to pay (cause of a gift card or a coupon code in example) you must use the NoPayment flow in order to get the order correctly handled
-
-<code>
-POST /orders/{order_id}/no-payment
-</code>
-
-You will get back a 200 status if the process ended correctly.
-In case of error you will get back a
-- 422 when Order amount is > 0
-- 423 when Order has already been processed
