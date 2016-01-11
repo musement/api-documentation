@@ -1,1 +1,149 @@
-# api-documentation
+<h1>Overview</h1>
+
+<table>
+<tr><td width="40px">V3</td><td>Update: Jan 2016</td></tr>
+</table>
+
+Here you can find documentation to help you start integrating with Musement. Explore step by step our events catalog and easily set up the checkout flow into your app or website.
+
+The Musement API gives you a set of endpoints to GET all the information about our products such as locations, opening hours, availability, prices, discounts and more. Also your application can create and manage carts, tickets and orders and make payments.
+
+
+
+<h2>Navigate the catalog</h2>
+You can reach an event calling one of these endpoints through the GET method:
+* /api/v3/categories/{id}/events
+* /api/v3/editorial-categories/{id}/events
+* /api/v3/verticals/{id}/events
+* /api/v3/venues/{id}/events
+* /api/v3/cities/{id}/events
+* /api/v3/countries/{id}/events
+* /api/v3/events/search
+
+Once you have chosen a specific event you can call it's details, informations and options using this endpoint:
+* /api/v3/events/{id}
+
+You will GET a response like [this](/event_response).
+
+<h2>Checkout flow</h2>
+To build a complete event page you will need, in addition to what you received from the last endpoint, also informations about availabiliy and prices. The goal is to have the user go through a funnel of options, starting from a generic event and choosing a specific date, hour and price option. At the end of the way you will GET a specific "seatprice".
+The <strong>seatprice</strong> is a Musement entity.
+Each of these is specific for a single event in a single time span for a single option (Adult, Child...).
+So every event can have multiple dates. Every date can have multiple seatprices.
+
+Musement events have three different kind of tickets
+
+<h4>Dates</h4>
+First step of the funnel is to get the available dates.
+
+<code>
+GET /api/v3/events/{id}/dates?date_from=YYYY-MM-DD&date_to=YYYY-MM-DD
+</code>
+
+<strong>NOTE:</strong>
+
+<blockquote>
+ <li> If you don't pass `date_from` and `date_to` the search will be performed only on the current day.</li>
+ <li> If you pass only `date_from` the search will be performed only on the specified day.</li>
+</blockquote>
+
+<h4>Hours & Seatprices</h4>
+Once you have found the day you must select the hours and the seatprice. To get these data you need to call the endpoint:
+
+<code>
+GET /api/v3/events/{id}/dates/{YYYY-MM-DD}
+</code>
+
+For each "datetime" in the response you have an array of `seats` each with a unique `id`, a `price_tag` that is the user friendly name for the seatprice, to be displayed in the frontend ("Adult", "Child", ...), the `retail price` and other information about the specific seatprice.
+
+<h4>Create cart</h4>
+
+Once you have chosen one or more seatprices you need to `POST` all the information about the `tickets` and the `customer` to create a cart. Also the `discount_code`, if the user has one, should be passed in this call.
+
+<code>
+POST /api/v3/carts
+</code>
+
+<pre><code>{
+    "tickets":[
+        {
+            "product": {
+                "id": 123456789
+            },
+            "quantity": 2
+        }
+    ],
+    "customer": {
+      "firstname" : "Greg",
+      "lastname" : "Drink",
+      "email": "greg@musement.com",
+      "country": {
+        "id": 123
+      }
+    }
+}
+</code></pre>
+
+<strong>Note:</strong>
+
+ - `tickest` is an array and it contains information about the product, the quantity and the metadata.The product has as value for `id` the `seatprice` retrived in the previous steps.  
+ - `customer` contains the informations about the customer that is purchasing the ticket. "customer" is another array that contains all the information about who is buying the tickets. They can be the data of the logged user, if any, or they can be requested at the moment of the purchase, just before the POST. These are not specifically the info about who will use the tickets, but simply about the buyer. In some cases though there can be requested also some data about each "passenger" of the tickets.
+
+<strong>Note:</strong>
+
+<blockquote>
+Remember to check the "status" of each ticket in the response you receive from the POST. Only if all the statuses are `PREBOOK_OK` you can go straight to the next step.</strong>
+</blockquote>
+
+The cart is the last step before payment and here you can still modify tickets and quantities.
+
+<h4>Create the order</h4>
+At the time you have defined your cart you can create an order by calling:
+
+<code>
+POST /api/v3/orders
+</code>
+
+<pre><code>{
+  "cart_id" : 123456
+}
+</code></pre>
+
+This POST will return the order_id that you will need to use in the following step.
+
+<h4>Payment via Braintree</h4>
+To close a payment you need 2 steps. With the `order_id` received from the previous response you can proceed to the payment calls.
+
+At first you need to obtain a `Braintree` Token calling this endpoint:
+
+<code>
+POST /api/v3/payments/braintree/token
+</code>
+
+Once you have the token you have to call:
+
+<code>
+POST /api/v3/payments/braintree/payment
+</code>
+
+<pre><code>{
+  "nonce" : 98765,
+  "order_id" : 123456
+}
+</code></pre>
+
+In this call you need to pass `nonce` that is the token previously obtained, the `order_id` you got at the moment you created the order.
+
+Once you get back the status 200 from the payment the entire process is ended.
+
+<h4>NoPayment flow</h4>
+If the order for some reason has a zero amount to pay (cause of a gift card or a coupon code in example) you must use the NoPayment flow in order to get the order correctly handled
+
+<code>
+POST /orders/{order_id}/no-payment
+</code>
+
+You will get back a 200 status if the process ended correctly.
+In case of error you will get back a
+- 422 when Order amount is > 0
+- 423 when Order has already been processed
