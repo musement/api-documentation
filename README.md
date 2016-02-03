@@ -479,7 +479,7 @@ Response ```{ "nonce": "eyJ2ZXJzaW9uIjoyLCJhdXRob3JpemF0aW9uRmluZ2VycHJpbnQiOiI3
 
 ###### Step 2 
 
-Using Braintree SDK, ask the user for payment information (credit card, paypal etc).
+Using Braintree SDK, ask the user for payment information (credit card, paypal etc). For more details please visit: https://developers.braintreepayments.com/
 
 ###### Step 3 
 
@@ -489,7 +489,7 @@ Request ```POST /api/v3/payments/braintree/payment```
 
 Request Body ```
 {
-  "nonce" : 98765,
+  "nonce" : "nonce_text",
   "cart_id" : 123456
 }
 ```
