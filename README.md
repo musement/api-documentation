@@ -60,7 +60,7 @@ In this case you need these values:
 * password
 
 ```
-GET /api/v3/login?client_id={client_id}&{client_secret}&grant_type=password&username={username}&password={password}
+GET /api/v3/login?client_id={client_id}&client_secret={client_secret}&grant_type=password&username={username}&password={password}
 ```  
 
 ### 2.2 Response  
