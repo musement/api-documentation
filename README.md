@@ -240,23 +240,24 @@ For example - in the cart:
 }
 ```
 
-If you will PATCH it with this request:
+If you PATCH it with this request:
 
 ```
 PATCH /cart/1
 BODY:
 {
+  "customer" : {
         "email": "guest136a@fakemail.com",
         "firstname": "Guest136a",
         "lastname": "surname136a",
         "country": {
-          "id": 123,
-          "name": "Nepal"
+          "id": 123
         }
+  }
 }
 ```
 
-You will ```GET /cart/1```:
+You will get the cart with the customer info ```GET /cart/1```:
 
 ```
 {
