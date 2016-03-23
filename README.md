@@ -488,10 +488,11 @@ After the user fills out the braintree payment form, ask us to process the payme
 
 Request ```POST /api/v3/payments/braintree/payment```
 
-Request Body ```
+Request Body 
+```
 {
   "nonce" : "nonce_text",
-  "cart_id" : 123456
+  "orderId" : 123456
 }
 ```
 
