@@ -1,4 +1,4 @@
- Musement API Documentation
+# Musement API Documentation
 
 ## 1. Introduction
 
