@@ -45,7 +45,7 @@ Use this to authenticate yourself with your integration credentials. You will ha
 * client_secret
    
 ```
-GET /api/v3/login?client_id={client_id}&{client_secret}&grant_type=client_credentials
+GET /api/v3/login?client_id={client_id}&client_secret={client_secret}&grant_type=client_credentials
 ```
 
 #### 2.1.2 Resource Owner Password Credentials
