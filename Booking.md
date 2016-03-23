@@ -1,4 +1,4 @@
-## 4. API for Booking
+## 3. API for Booking
 
 For a successful booking you have to: 
 
@@ -10,11 +10,11 @@ For a successful booking you have to:
 6. Finalize the order with or without payment (depending on your contract)
 7. Retrieve the voucher
 
-### 4.1 GET Event
+### 3.1 GET Event
 
 To navigate the catalog refer to paragraph 3. 
 
-### 4.2 GET Event Available Dates
+### 3.2 GET Event Available Dates
 
 **DOCs**: [http://api.musement.com/documentation#get--api-v3-events-{id}-dates.{_format}]
 (http://api.musement.com/documentation#get--api-v3-events-{id}-dates.{_format})
@@ -47,7 +47,7 @@ Authorization: Bearer MWFkZWE5YWUyZTZiNzM3NzFjMzkwZmI3ZDgyM2E2ZWQ0YWFmNDQ1NTM4ZD
 ]
 ```
 
-### 4.3 Event Available Ticket on a Date
+### 3.3 Event Available Ticket on a Date
 
 Request 
 
@@ -90,11 +90,11 @@ Response
 ]
 ```
 
-### 4.4 Cart APIs
+### 3.4 Cart APIs
 
 Cart APIs are useful to check the amount of the order, add promotions and discounts and check ticket availability. Every time you add something to it we block the ticket and calculate the final price of the order.
 
-#### 4.4.1 POST /carts - Create a new Cart
+#### 3.4.1 POST /carts - Create a new Cart
 
 DOCs: http://api.musement.com/documentation#post--api-v3-carts.{_format}
 
@@ -102,8 +102,8 @@ Check Documentation for Request Payload.
 
 NB. The Product id is the SeatPrice id. 
 
-#### 4.4.2 GET /cart/{id} - Retrive the cart
-#### 4.4.3 PUT/PATCH /cart/{id} - To Update the cart
+#### 3.4.2 GET /cart/{id} - Retrive the cart
+#### 3.4.3 PUT/PATCH /cart/{id} - To Update the cart
 
 With this API you can update your cart, adding or removing tickets or populating it with customer info.
 The main difference between PUT and PATCH is that with the first you will update the model of the cart with the body you send, with the PATCH you will update just the field you sent in body. 
@@ -208,8 +208,8 @@ Check, all original data is still there plus the new customer info.
 
 
 
-#### 4.4.3 DELETE Cart - Delete the cart
-#### 4.4.4 Customer Info needed for cart
+#### 3.4.3 DELETE Cart - Delete the cart
+#### 3.4.4 Customer Info needed for cart
 
 Docs: http://api.musement.com/documentation#get--api-v3-carts-{id}-form.{_format}
 
@@ -353,23 +353,23 @@ Just required fields are needed for a successful booking. With a response like t
 ```
 
 
-### 4.5 Create the order
+### 3.5 Create the order
 
 When the cart is completed (**with customer info filled in**) and you want to finalize it (proceed with payments and check the availability one last time) 
 
 ```POST /api/v3/order```
 
-### 4.6 Finalize the order
+### 3.6 Finalize the order
 
 
 If the order amount is equal to 0 or you use your payment gateway, use the flow without payment (ask for activation). Otherwise follow the Payment flow in 4.4.2.
 
 
-#### 4.6.1 Without Payment Flow
+#### 3.6.1 Without Payment Flow
 
 Request ```POST /api/v3/payments/no-payment```
 
-#### 4.6.2 With Payment Flow
+#### 3.6.2 With Payment Flow
 
 ##### Braintree Payments
 
@@ -401,7 +401,7 @@ Request Body
 }
 ```
 
-### 4.7 Retrieve the voucher
+### 3.7 Retrieve the voucher
 
 If you used the login 2.1.2 you can retrieve the voucher with the Request
 
