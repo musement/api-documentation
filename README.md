@@ -472,6 +472,8 @@ Request ```POST /api/v3/payments/no-payment```
 
 You have to integrate Braintree SDK
 
+Note: in QA endpoint use credit card numbers contained in this link https://developers.braintreepayments.com/reference/general/testing/ruby#credit-card-numbers 
+
 ###### Step 1 
 GET the token
 
