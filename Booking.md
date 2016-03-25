@@ -12,7 +12,7 @@ For a successful booking you have to:
 
 ### 3.1 GET Event
 
-To navigate the catalog refer to paragraph 3. 
+To navigate the catalog refer to [paragraph 2] (https://github.com/musement/api-documentation/blob/master/Catalog.md). 
 
 ### 3.2 GET Event Available Dates
 
