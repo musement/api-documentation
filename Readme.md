@@ -11,7 +11,7 @@ Clicking on the links below you can find all step by step instructions that you 
 1. [API for Authentication] (https://github.com/musement/api-documentation/blob/master/Authentication.md)
 2. [API for Catalog] (https://github.com/musement/api-documentation/blob/master/Catalog.md)
 3. [API for Booking] (https://github.com/musement/api-documentation/blob/master/Booking.md)
-4. API for Search - documentation in progress
+4. [API for Search] (https://github.com/musement/api-documentation/blob/master/Search.md)
 
 ### Swagger sandbox tool
 
