@@ -1,5 +1,7 @@
 ## 2. API for Catalog
 
+![Catalog](http://musement.s3.amazonaws.com/documentation_images/catalog.png)
+
 ### 2.1 Main Endpoints
 
 * ```GET Countries```   
