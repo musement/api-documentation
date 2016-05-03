@@ -1,5 +1,7 @@
 ## 3. API for Booking
 
+![Booking](http://musement.s3.amazonaws.com/documentation_images/booking.png)
+
 For a successful booking you have to: 
 
 1. ```GET /events/{id}```
