@@ -16,27 +16,38 @@ For a successful booking you have to:
 
 To navigate the catalog refer to [paragraph 2] (https://github.com/musement/api-documentation/blob/master/Catalog.md). 
 
-### 3.2 GET Event Available Dates
+### 3.2 Get available dates for a specific event
 
 **DOCs**: [http://api.musement.com/documentation#get--api-v3-events-{id}-dates.{_format}]
 (http://api.musement.com/documentation#get--api-v3-events-{id}-dates.{_format})
 
-You can specify:
+Returns a list of all days with availabitiy for a specific event over a period of time.
 
-* from_date
-* to_date
+To specify the period you can use the parameters `from_date` and `end_date`. If none of this data parameters is specified `from_date` is set to the current day. If `end_date` is not specified then `end_date` is set same as `from_date`
 
-otherwise you will get the current year. 
+**Examples:**
 
-**Example Request:**
+*** No parameters *** 
+
+`from_date` and `end_date` are set as the current day. This call return the current date if there is availabitiy an empty array otherwise.
 
 ```
-GET /api/v3/events/497/dates HTTP/1.1
-Host: api.musement.com
-Authorization: Bearer MWFkZWE5YWUyZTZiNzM3NzFjMzkwZmI3ZDgyM2E2ZWQ0YWFmNDQ1NTM4ZDM4Mzc0MDkyNzMyZWMzNWNkNjQzOA
+GET /api/v3/events/497/dates
+Authorization: Bearer HereTheBearerFromOauth
+```
+
+*** With parameters *** 
+
+Search for available dates for dicember 2016
+
+```
+GET /api/v3/events/497/dates?from_date=2016-12-01&end_date=2016-12-31
+Authorization: Bearer HereTheBearerFromOauth
 ```
 
 **Example Response:**
+
+The response is a collection of date
 
 ```
 [
@@ -44,14 +55,28 @@ Authorization: Bearer MWFkZWE5YWUyZTZiNzM3NzFjMzkwZmI3ZDgyM2E2ZWQ0YWFmNDQ1NTM4ZD
     "date": "2016-01-14"
   },
   {
-    "date": "2016-01-15"
+    "date": "2016-01-25"
   }
 ]
 ```
 
-### 3.3 Event Available Ticket on a Date
+### 3.3 Tickets available for a specific event and day
 
-Request 
+Return a list of all available tickets for a specific day. The response is a collection of items containing : 
+
+ - `datetime` - The date and time. For a single day an event can start more than once.
+ - `seats` - A collection of all available `seats`. Here the seat structure
+ - `open_ticket` - If true the event is an open ticket
+ - `availability` - Number of place avaialble
+ - `languages` - The event can be available in different language. Different time can have different languages
+
+
+`seat` structure:
+
+ - `id` - Unique seat identifier
+ - `price_tag` - Give info about the person the ticket is for. Ticket type (`name`) and type of person (`group`) the `seat` is for. Please note that for the same date and time the combination of `name` and `group`  is unique but you can have more seat with the same `group` or `name`
+ - `max_buy` and `min_buy` - Maximum and minimum number of ticket buyiable in a single transaction
+ - `raw_price` and `retail_price` - Internal and public price
 
 ```GET /api/v3/events/497/dates/2016-01-15```
 
