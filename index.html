@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musement API documentation</title>
+
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic'
+          rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="/css/theme.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/theme-fixes.css" type="text/css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
+</head>
+<body class="wy-body-for-nav">
+
+    <div class="wy-grid-for-nav">
+
+        <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+            <div class="wy-side-nav-search">
+                <a href="/" class="fa fa-home"> Musement API documentation</a>
+            </div>
+
+            <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                                            <li class="toctree-l1 ">
+                            <a class="reference internal "
+                               href="/authentication.html">
+                                Authentication
+                            </a>
+                        </li>
+                                            <li class="toctree-l1 ">
+                            <a class="reference internal "
+                               href="/catalog.html">
+                                Catalog
+                            </a>
+                        </li>
+                                            <li class="toctree-l1 ">
+                            <a class="reference internal "
+                               href="/booking.html">
+                                Booking
+                            </a>
+                        </li>
+                                            <li class="toctree-l1 ">
+                            <a class="reference internal "
+                               href="/search.html">
+                                Search
+                            </a>
+                        </li>
+                                    </ul>
+            </div>
+            &nbsp;
+        </nav>
+
+        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+                        <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+                <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+                <a href="/">Musement API documentation</a>
+            </nav>
+
+
+                        <div class="wy-nav-content">
+                <div class="rst-content">
+                    <div role="main" class="document">
+                        <h1 id="musement-api-documentation">Musement API Documentation</h1>
+<p>Current latest version 3.0.0</p>
+<p>Here you can find documentation to help you start integrating with Musement. Explore our events catalog step by step and easily set up the checkout flow into your app or website.</p>
+<p>The Musement API gives you a set of endpoints to GET all the information about our products such as locations, opening hours, availability, prices, discounts and more. Also your application can create and manage carts, tickets and orders and make payments.</p>
+<p>Clicking on the links below you can find all step by step instructions that you need</p>
+<ol>
+<li>[API for Authentication] (<a href="https://github.com/musement/api-documentation/blob/master/Authentication.md">https://github.com/musement/api-documentation/blob/master/Authentication.md</a>)</li>
+<li>[API for Catalog] (<a href="https://github.com/musement/api-documentation/blob/master/Catalog.md">https://github.com/musement/api-documentation/blob/master/Catalog.md</a>)</li>
+<li>[API for Booking] (<a href="https://github.com/musement/api-documentation/blob/master/Booking.md">https://github.com/musement/api-documentation/blob/master/Booking.md</a>)</li>
+<li>[API for Search] (<a href="https://github.com/musement/api-documentation/blob/master/Search.md">https://github.com/musement/api-documentation/blob/master/Search.md</a>)</li>
+</ol>
+<h3 id="swagger-sandbox-tool">Swagger sandbox tool</h3>
+<p><a href="https://api.musement.com/documentation"><a href="https://api.musement.com/documentation">https://api.musement.com/documentation</a></a></p>
+<h3 id="endpoints">Endpoints</h3>
+<ul>
+<li><em>Production</em>: <a href="https://api.musement.com/api/v3">https://api.musement.com/api/v3</a></li>
+<li><em>QA-testing</em>: <a href="https://api-qa.musement.com/api/v3">https://api-qa.musement.com/api/v3</a></li>
+</ul>
+<h3 id="shared-headers">Shared Headers</h3>
+<ul>
+<li>Accept-Language</li>
+<li>X-Musement-Currency</li>
+<li>X-Musement-Version</li>
+</ul>
+<p>Note: when you are creating a new project with Musement API set X-Musement-Version to the current latest version. You can check it at the top of this document. Once you have set the version you will remain with a stable data model. When a new version is released you can check the documentation and choose to upgrade your header or remain with your version. If you don't set the header it will call by default the latest version and it might change the data model without you knowing it. </p>
+                    </div>
+
+                    <footer>
+                        <hr/>
+                                                Built with <a href="http://couscous.io/">Couscous</a> using a <a href="https://github.com/CouscousPHP/Template-ReadTheDocs">theme</a> based on <a href="https://readthedocs.org/">Read the Docs</a>.
+                    </footer>
+
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script src="/js/theme.js"></script>
+
+    <script>
+        $(function() {
+            // Syntax highlighting
+            hljs.initHighlightingOnLoad();
+        });
+    </script>
+
+</body>
+</html>

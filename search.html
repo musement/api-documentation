@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musement API documentation</title>
+
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic'
+          rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="/css/theme.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/theme-fixes.css" type="text/css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
+</head>
+<body class="wy-body-for-nav">
+
+    <div class="wy-grid-for-nav">
+
+        <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+            <div class="wy-side-nav-search">
+                <a href="/" class="fa fa-home"> Musement API documentation</a>
+            </div>
+
+            <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                                            <li class="toctree-l1 ">
+                            <a class="reference internal "
+                               href="/authentication.html">
+                                Authentication
+                            </a>
+                        </li>
+                                            <li class="toctree-l1 ">
+                            <a class="reference internal "
+                               href="/catalog.html">
+                                Catalog
+                            </a>
+                        </li>
+                                            <li class="toctree-l1 ">
+                            <a class="reference internal "
+                               href="/booking.html">
+                                Booking
+                            </a>
+                        </li>
+                                            <li class="toctree-l1 ">
+                            <a class="reference internal "
+                               href="/search.html">
+                                Search
+                            </a>
+                        </li>
+                                    </ul>
+            </div>
+            &nbsp;
+        </nav>
+
+        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+                        <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+                <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+                <a href="/">Musement API documentation</a>
+            </nav>
+
+
+                        <div class="wy-nav-content">
+                <div class="rst-content">
+                    <div role="main" class="document">
+                        <h2 id="4-api-for-search">4. API for Search</h2>
+<p>If you want to search some place or an event this is the endpoint to be used:</p>
+<p><code>GET /api/v3/events/search-extended</code></p>
+<p>You can pass your query string of keywords with the parameter <code>"q"</code></p>
+<p><code>GET /api/v3/events/search-extended?q=sagrada+familia</code></p>
+<p><code>limit</code> : numeric value to limit the number of results, default is 10</p>
+<p><code>sorting</code> : you can sort the results by &quot;popularity&quot;, &quot;price&quot; or &quot;rating&quot;</p>
+<h3 id="41-filters">4.1 Filters</h3>
+<p>You can also filter the results using this list of parameters:</p>
+<p><code>language</code> : events that are translated in one of the langauges passed as a comma separated array</p>
+<p><code>vertical</code> : events that are associated to one of the specified verticals</p>
+<p><code>category</code> : events that are associated to one of the specifiedcategories</p>
+<p><code>topFeature</code> : events that have one of these properties: &quot;Top seller&quot;, &quot;Must see&quot; or &quot;Best seller&quot;</p>
+<p><code>country</code> : events that are associated to one of the specified countries</p>
+<p><code>city</code> : events that are associated to one of the specified cities</p>
+<p><code>minPrice</code> : events that have a default price over the numeric value passed</p>
+<p><code>maxPrice</code> : events that have a default price below the numeric value passed</p>
+                    </div>
+
+                    <footer>
+                        <hr/>
+                                                Built with <a href="http://couscous.io/">Couscous</a> using a <a href="https://github.com/CouscousPHP/Template-ReadTheDocs">theme</a> based on <a href="https://readthedocs.org/">Read the Docs</a>.
+                    </footer>
+
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script src="/js/theme.js"></script>
+
+    <script>
+        $(function() {
+            // Syntax highlighting
+            hljs.initHighlightingOnLoad();
+        });
+    </script>
+
+</body>
+</html>
