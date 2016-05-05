@@ -69,10 +69,10 @@
 <p>The Musement API gives you a set of endpoints to GET all the information about our products such as locations, opening hours, availability, prices, discounts and more. Also your application can create and manage carts, tickets and orders and make payments.</p>
 <p>Clicking on the links below you can find all step by step instructions that you need</p>
 <ol>
-<li>[API for Authentication] (<a href="https://github.com/musement/api-documentation/blob/master/Authentication.md">https://github.com/musement/api-documentation/blob/master/Authentication.md</a>)</li>
-<li>[API for Catalog] (<a href="https://github.com/musement/api-documentation/blob/master/Catalog.md">https://github.com/musement/api-documentation/blob/master/Catalog.md</a>)</li>
-<li>[API for Booking] (<a href="https://github.com/musement/api-documentation/blob/master/Booking.md">https://github.com/musement/api-documentation/blob/master/Booking.md</a>)</li>
-<li>[API for Search] (<a href="https://github.com/musement/api-documentation/blob/master/Search.md">https://github.com/musement/api-documentation/blob/master/Search.md</a>)</li>
+<li>[API for Authentication] ({{ baseUrl }}/authentication.md)</li>
+<li>[API for Catalog] ({{ baseUrl }}/catalog.html)</li>
+<li>[API for Booking] ({{ baseUrl }}/booking.html)</li>
+<li>[API for Search] ({{ baseUrl }}/search.hmtl)</li>
 </ol>
 <h3 id="swagger-sandbox-tool">Swagger sandbox tool</h3>
 <p><a href="https://api.musement.com/documentation"><a href="https://api.musement.com/documentation">https://api.musement.com/documentation</a></a></p>
@@ -81,9 +81,31 @@
 <li><em>Production</em>: <a href="https://api.musement.com/api/v3">https://api.musement.com/api/v3</a></li>
 <li><em>QA-testing</em>: <a href="https://api-qa.musement.com/api/v3">https://api-qa.musement.com/api/v3</a></li>
 </ul>
-<h3 id="generic-info">Generic info</h3>
-<p><code>Accept-Language</code> - Change the language of the response. </p>
-<h3 id="change-the-currency-in-the-response">Change the currency in the response.</h3>
+<h2 id="generic-info">Generic info</h2>
+<h3 id="language">Language</h3>
+<p>Musement content is available in different languages. You can specify the language using the standard header <code>Accept-Language</code> If the content is not available for the language requested the English version is returned</p>
+<h5 id="examples">Examples</h5>
+<p>Request information for a specific city in spanish.</p>
+<pre><code>GET /api/v3/cities/2
+Accept-Language: es</code></pre>
+<pre><code>{
+  "id": 2,
+  "top": true,
+  "has_concierge": true,
+  "name": "Roma",
+  "code": "rome",
+  "content": "El más grande y asombroso museo al aire libre del mundo. Esta es Roma, la capital de Italia, primera gran metrópoli da la humanidad y una de las ciudades más amplias de Europa. Roma concentra sus tres milenios de historia en los testimonios arquitectónicos y artísticos que te dejan sin aliento, obras maestras que la convierten en una de las ciudades más visitadas y admiradas en el mundo. Hay quien dice que una vida no es suficiente para descubrir todos sus tesoros, y sin embargo, basta un sólo día para dejarse seducir por el encanto decadente y embriagador de la antigua capital de una de las civilizaciones antiguas más importantes, el Imperio Romano.Roma es la ciudad con la más alta concentración de bienes históricos y arquitectónicos del mundo.",
+  "latitude": 41.898,
+  "longitude": 12.483,
+  "country": {
+    "id": 82,
+    "name": "Italia",
+    "iso_code": "IT"
+  },
+  "cover_image_url": "https://static1.musement.com/cover/0001/03/rome_event-2986.jpeg?event",
+  "url": "https://www.musement.com/es/roma/"
+}</code></pre>
+<h3 id="currency">Currency</h3>
 <p>To change the currency of the prices you must use <code>X-Musement-Currency</code></p>
 <h5 id="availables-currencies">Availables currencies</h5>
 <table>
@@ -128,7 +150,7 @@
 </tr>
 </tbody>
 </table>
-<h5 id="examples">Examples</h5>
+<h5 id="examples-1">Examples</h5>
 <p>Getting prices in Swedish Krone</p>
 <pre><code>GET /api/v3/events/1/dates/2016-02-10
 X-Musement-Currency: SEK</code></pre>
@@ -151,7 +173,7 @@ X-Musement-Currency: USD</code></pre>
 <p>The corrent latest verision is: <code>3.0.0</code></p>
 <p>When you start a new project that uses <em>Musement API</em> set <code>X-Musement-Version</code> to the current latest version. This assure that the model in the response will be stable with time. If you don't set the header the server will alwayas returns the latest version. </p>
 <p>When a new version is released you can check the documentation and choose to upgrade your header or remain with your version. You can also specify different version for different calls. But we discourage this practice.</p>
-<h5 id="examples-1">Examples</h5>
+<h5 id="examples-2">Examples</h5>
 <pre><code>GET /api/v3/events/1/dates/2016-02-10
 X-Musement-Version: 3.0.0</code></pre>
                     </div>
