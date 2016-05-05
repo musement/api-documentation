@@ -8,10 +8,10 @@ The Musement API gives you a set of endpoints to GET all the information about o
 
 Clicking on the links below you can find all step by step instructions that you need
 
-1. [API for Authentication] ({{ baseUrl }}/authentication.md)
-2. [API for Catalog] ({{ baseUrl }}/catalog.html)
-3. [API for Booking] ({{ baseUrl }}/booking.html)
-4. [API for Search] ({{ baseUrl }}/search.hmtl)
+1. [API for Authentication]({{ baseUrl }}/authentication.md)
+2. [API for Catalog]({{ baseUrl }}/catalog.html)
+3. [API for Booking]({{ baseUrl }}/booking.html)
+4. [API for Search]({{ baseUrl }}/search.hmtl)
 
 ### Swagger sandbox tool
 
