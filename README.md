@@ -8,14 +8,14 @@ The Musement API gives you a set of endpoints to GET all the information about o
 
 Clicking on the links below you can find all step by step instructions that you need
 
-1. [API for Authentication]({{ baseUrl }}/authentication.md)
-2. [API for Catalog]({{ baseUrl }}/catalog.html)
-3. [API for Booking]({{ baseUrl }}/booking.html)
-4. [API for Search]({{ baseUrl }}/search.hmtl)
+1. [API for Authentication](http://thack.musement.com/thack_api/authentication.md)
+2. [API for Catalog](http://thack.musement.com/thack_api/catalog.html)
+3. [API for Booking](http://thack.musement.com/thack_api/booking.html)
+4. [API for Search](http://thack.musement.com/thack_api/search.hmtl)
 
 ### Swagger sandbox tool
 
-[https://api.musement.com/documentation](https://api.musement.com/documentation)
+[https://api.musement.com/documentation](http://thack.musement.com/documentation)
 
 ### Endpoints
 
