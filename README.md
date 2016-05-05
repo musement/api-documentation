@@ -24,11 +24,11 @@ Clicking on the links below you can find all step by step instructions that you 
 
 ### Generic info
 
-#### Headers
-
 `Accept-Language` - Change the language of the response. 
 
-`X-Musement-Currency` - Change the currency in the response. 
+### Change the currency in the response. 
+
+To change the currency of the prices you must use `X-Musement-Currency`
 
 ##### Availables currencies
 
@@ -45,19 +45,23 @@ Clicking on the links below you can find all step by step instructions that you 
 
 ##### Examples
 
+Getting prices in Swedish Krone
+
 ```
 GET /api/v3/events/1/dates/2016-02-10
-X-Musement-Currency: EUR
+X-Musement-Currency: SEK
 ```
 
 ```
 ...
   "retail_price": {
-    "currency": "EUR",
-    "value": 40,
-    "formatted_value": "€ 40.00"
+    "currency": "SEK",
+    "value": 380,
+    "formatted_value": "SEK 380.00"
   }
 ```
+
+and is USA dollars
 
 ```
 GET /api/v3/events/1/dates/2016-02-10
@@ -73,6 +77,17 @@ X-Musement-Currency: USD
   }
 ```
 
-* X-Musement-Version
- 
-Note: when you are creating a new project with Musement API set X-Musement-Version to the current latest version. You can check it at the top of this document. Once you have set the version you will remain with a stable data model. When a new version is released you can check the documentation and choose to upgrade your header or remain with your version. If you don't set the header it will call by default the latest version and it might change the data model without you knowing it. 
+### API Versioning
+
+The corrent latest verision is: `3.0.0`
+
+When you start a new project that uses _Musement API_ set `X-Musement-Version` to the current latest version. This assure that the model in the response will be stable with time. If you don't set the header the server will alwayas returns the latest version. 
+
+When a new version is released you can check the documentation and choose to upgrade your header or remain with your version. You can also specify different version for different calls. But we discourage this practice.
+
+##### Examples
+
+```
+GET /api/v3/events/1/dates/2016-02-10
+X-Musement-Version: 3.0.0
+```
