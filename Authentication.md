@@ -56,3 +56,18 @@ GET /api/v3/cities HTTP/1.1
 Host: api.musement.com
 Authorization: Bearer MWFkZWE5YWUyZTZiNzM3NzFjMzkwZmI3ZDgyM2E2ZWQ0YWFmNDQ1NTM4ZDM4Mzc0MDkyNzMyZWMzNWNkNjQzOA
 ```
+
+>  :exclamation: Please remember that you must include this header in *ALL* requests
+
+### Token expirations
+
+Token expires so you must check the status code for all responses. If the response has `401` as status code you must request a new `access_token` using the `refresh_token` that was in the authentication response.
+
+To request a new `access_token` using the `refresh_token` just call the login endpoint passing `refresh_token` as `grant_type`
+
+```
+GET /api/v3/login?client_id={client_id}&client_secret={client_secret}&refresh_token={refresh_token}&grant_type=refresh_token
+```
+
+The response contains a new `access_token` *and a new* `refresh_token`. You should use these new values from now on. 
+
