@@ -1,4 +1,4 @@
-## 1. API for Authentication
+## Authentication
 
 Authentication is required for each request. With it we can grant you the right permissions to navigate and operate our data. We follow the oAuth2 standard [RFC-6749](https://tools.ietf.org/html/rfc6749) for authentication.
 
@@ -16,13 +16,13 @@ As described in the previou article this grant type is useful if you don't have 
 GET /api/v3/login?client_id={client_id}&client_secret={client_secret}&grant_type=client_credentials
 ```
 
-And you'll get an access token not connect to a user.
+And you'll get an access token. *Please remember* that this access token is not connect to a customer.
 
 ### Resource Owner Password Credentials
 
-Use this if you want to authenticate a specific customer in a way to allow him to access to his information (like previous orders, profile, preferences, etc)
+Use this if you want to authenticate a specific customer and access his personal information ( previous orders, profile, preferences, etc)
 
-The endpoint is again `/api/v3/login` but this time you need to specify also the `username` and the `password` for the user you want to authenticate
+The endpoint is again `/api/v3/login` but this time you need to specify also the `username` and the `password` for the user you want to authenticate.
 
 ##### _Example_
 
