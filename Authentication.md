@@ -56,7 +56,7 @@ Host: api.musement.com
 Authorization: Bearer MWFkZWE5YWUyZTZiNzM3NzFjMzkwZmI3ZDgyM2E2ZWQ0YWFmNDQ1NTM4ZDM4Mzc0MDkyNzMyZWMzNWNkNjQzOA
 ```
 
->  :exclamation: Please remember that you must include this header in *ALL* requests
+>  **Please remember that you must include this header in ALL requests**
 
 ### Token expirations
 
