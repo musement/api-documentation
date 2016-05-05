@@ -8,8 +8,7 @@ At the moment we support _Client credentials_ and _Resource Owner Password Crede
 
 ### Client Credentials
 
-As described in the previou article this grant type is useful if you don't have any customer context. Obtain an `Access Token` is very easy and you just need to send a request to the endpoint `/api/v3/login` specifing you `client_id` and `client_secret` 
-* client_secret
+As described in the previou article this grant type is useful if you don't have any customer context. Obtain an `Access Token` is very easy and you just need to send a request to the endpoint `/api/v3/login` specifing you `client_id` and `client_secret`
    
 ##### _Example_
 
