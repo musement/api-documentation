@@ -68,10 +68,7 @@
 <p>For a good explanation of OAUTH2 see this page on <a href="https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2">DigitalOcean</a></p>
 <p>At the moment we support <em>Client credentials</em> and <em>Resource Owner Password Credentials</em>. </p>
 <h3 id="client-credentials">Client Credentials</h3>
-<p>As described in the previou article this grant type is useful if you don't have any customer context. Obtain an <code>Access Token</code> is very easy and you just need to send a request to the endpoint <code>/api/v3/login</code> specifing you <code>client_id</code> and <code>client_secret</code> </p>
-<ul>
-<li>client_secret</li>
-</ul>
+<p>As described in the previou article this grant type is useful if you don't have any customer context. Obtain an <code>Access Token</code> is very easy and you just need to send a request to the endpoint <code>/api/v3/login</code> specifing you <code>client_id</code> and <code>client_secret</code></p>
 <h5><em>Example</em></h5>
 <pre><code>GET /api/v3/login?client_id={client_id}&amp;client_secret={client_secret}&amp;grant_type=client_credentials</code></pre>
 <p>And you'll get an access token not connect to a user.</p>
@@ -96,7 +93,7 @@
 Host: api.musement.com
 Authorization: Bearer MWFkZWE5YWUyZTZiNzM3NzFjMzkwZmI3ZDgyM2E2ZWQ0YWFmNDQ1NTM4ZDM4Mzc0MDkyNzMyZWMzNWNkNjQzOA</code></pre>
 <blockquote>
-<p>:exclamation: Please remember that you must include this header in <em>ALL</em> requests</p>
+<p><strong>Please remember that you must include this header in ALL requests</strong></p>
 </blockquote>
 <h3 id="token-expirations">Token expirations</h3>
 <p>Token expires so you must check the status code for all responses. If the response has <code>401</code> as status code you must request a new <code>access_token</code> using the <code>refresh_token</code> that was in the authentication response.</p>

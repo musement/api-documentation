@@ -63,16 +63,21 @@
                         <div class="wy-nav-content">
                 <div class="rst-content">
                     <div role="main" class="document">
-                        <h2 id="2-api-for-catalog">2. API for Catalog</h2>
+                        <h2 id="catalog">Catalog</h2>
+<p>The key part of the Musement catalogue are events. Events are organized by type using <em>Categories</em> and <em>Verticals</em> and by geographical location using <em>Cities</em> and <em>Venues</em>.</p>
+<p>To find events in the catalogue you can use the <em>Search</em> or you can navigate it by using some predefined collection.</p>
 <p><img src="http://musement.s3.amazonaws.com/documentation_images/catalog.png" alt="Catalog" /></p>
-<h3 id="21-main-endpoints">2.1 Main Endpoints</h3>
+<h3 id="event-endpoints">Event endpoints</h3>
+<p>All these enpoint return events. All these endpoint support different parameters that allow you to further filter the events.</p>
 <ul>
-<li><code>GET Countries</code>   </li>
-<li><code>GET Cities</code>      </li>
-<li><code>GET Categories</code></li>
+<li><code>GET /api/v3/verticals/{id}/events</code> | All the events for a specific <em>Vertical</em>  | <a href="http://thack.musement.com/documentation#get--api-v3-verticals-{id}-events.{_format}">Test it</a></li>
+<li><code>GET /api/v3/categories/{id}/events</code> | All the events for a specific <em>Category</em> | <a href="http://thack.musement.com/documentation#get--api-v3-categories-{id}-events.{_format}">Test it</a></li>
+<li><code>GET /api/v3/venues/{id}/events</code> | All the events for a specific <em>Venue</em> | <a href="http://thack.musement.com/documentation#get--api-v3-venues-{id}-events.{_format}">Test it</a></li>
+<li><code>GET /api/v3/cities/{id}/events</code> | All the events for a specific <em>City</em> | <a href="http://thack.musement.com/documentation#get--api-v3-cities-{id}-events.{_format}">Test it</a></li>
+<li><code>GET /api/v3/cities/{id}/events/{today|tomorrow}</code> | Return all events available in a specific city <code>today</code> or <code>tomorrow</code> | <a href="http://thack.musement.com/documentation#get--api-v3-cities-{id}-events-{happening}.{_format}">Test it</a></li>
+<li><code>GET /api/v3/countries/{id}/events</code> | All the events for a specific <em>Country</em> | <a href="http://thack.musement.com/documentation#get--api-v3-countries-{id}-events.{_format}">Test it</a></li>
 </ul>
 <p>Full list: <a href="http://api.musement.com/documentation">http://api.musement.com/documentation</a></p>
-<p>Next step - [API for Booking] (<a href="https://github.com/musement/api-documentation/blob/master/Booking.md">https://github.com/musement/api-documentation/blob/master/Booking.md</a>)</p>
                     </div>
 
                     <footer>
