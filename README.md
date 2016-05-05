@@ -4,14 +4,14 @@ Current latest version 3.0.0
 
 Here you can find documentation to help you start integrating with Musement. Explore our events catalog step by step and easily set up the checkout flow into your app or website.
 
-The Musement API gives you a set of endpoints to GET all the information about our products such as locations, opening hours, availability, prices, discounts and more. Also your application can create and manage carts, tickets and orders and make payments.
+The Musement API gives you a set of endpoints to get all the information about our _Events_ such as locations, opening hours, availability, prices, discounts and more. Also your application can create and manage carts, tickets and orders and make payments.
 
 Clicking on the links below you can find all step by step instructions that you need
 
-1. [API for Authentication](http://thack.musement.com/thack_api/authentication.html)
-2. [API for Catalog](http://thack.musement.com/thack_api/catalog.html)
-3. [API for Booking](http://thack.musement.com/thack_api/booking.html)
-4. [API for Search](http://thack.musement.com/thack_api/search.html)
+1. [Authentication](http://thack.musement.com/thack_api/authentication.html)
+2. [The catalog](http://thack.musement.com/thack_api/catalog.html)
+3. [Booking](http://thack.musement.com/thack_api/booking.html)
+4. [Search the catalog](http://thack.musement.com/thack_api/search.html)
 
 ### Swagger sandbox tool
 
