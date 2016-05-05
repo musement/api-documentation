@@ -66,23 +66,23 @@
                         <h2 id="1-api-for-authentication">1. API for Authentication</h2>
 <p>Authentication is required for each request. With it we can grant you the right permissions to navigate and operate our data. We follow the oAuth2 standard <a href="https://tools.ietf.org/html/rfc6749">RFC-6749</a> for authentication.</p>
 <p>For a good explanation of OAUTH2 see this page on <a href="https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2">DigitalOcean</a></p>
-<p>At the moment we support <code>Client credentials</code> and <code>Resource Owner Password Credentials</code>. </p>
+<p>At the moment we support <em>Client credentials</em> and <em>Resource Owner Password Credentials</em>. </p>
 <h3 id="client-credentials">Client Credentials</h3>
 <p>As described in the previou article this grant type is useful if you don't have any customer context. Obtain an <code>Access Token</code> is very easy and you just need to send a request to the endpoint <code>/api/v3/login</code> specifing you <code>client_id</code> and <code>client_secret</code> </p>
 <ul>
 <li>client_secret</li>
 </ul>
-<h4 id="example">Example</h4>
+<h5><em>Example</em></h5>
 <pre><code>GET /api/v3/login?client_id={client_id}&amp;client_secret={client_secret}&amp;grant_type=client_credentials</code></pre>
 <p>And you'll get an access token not connect to a user.</p>
 <h3 id="resource-owner-password-credentials">Resource Owner Password Credentials</h3>
 <p>Use this if you want to authenticate a specific customer in a way to allow him to access to his information (like previous orders, profile, preferences, etc)</p>
 <p>The endpoint is again <code>/api/v3/login</code> but this time you need to specify also the <code>username</code> and the <code>password</code> for the user you want to authenticate</p>
-<h4 id="example-1">Example</h4>
+<h5><em>Example</em></h5>
 <pre><code>GET /api/v3/login?client_id={client_id}&amp;client_secret={client_secret}&amp;grant_type=password&amp;username={username}&amp;password={password}</code></pre>
 <h3 id="authentication-response">Authentication response</h3>
 <p>All the authentication requests, despite the grant type, has the same response. The information you need to save are <code>access_token</code> and <code>refresh_token</code>. The value of <code>access_token</code> is the value you have to pass in the <code>Authentication</code> header in all your request.</p>
-<h4 id="example-2">Example</h4>
+<h5><em>Example</em></h5>
 <p>A response for an authentication request</p>
 <pre><code>{
   "access_token": "MWFkZWE5YWUyZTZiNzM3NzFjMzkwZmI3ZDgyM2E2ZWQ0YWFmNDQ1NTM4ZDM4Mzc0MDkyNzMyZWMzNWNkNjQzOA",

@@ -69,10 +69,10 @@
 <p>The Musement API gives you a set of endpoints to GET all the information about our products such as locations, opening hours, availability, prices, discounts and more. Also your application can create and manage carts, tickets and orders and make payments.</p>
 <p>Clicking on the links below you can find all step by step instructions that you need</p>
 <ol>
-<li>[API for Authentication] ({{ baseUrl }}/authentication.md)</li>
-<li>[API for Catalog] ({{ baseUrl }}/catalog.html)</li>
-<li>[API for Booking] ({{ baseUrl }}/booking.html)</li>
-<li>[API for Search] ({{ baseUrl }}/search.hmtl)</li>
+<li>[API for Authentication]({{ baseUrl }}/authentication.html)</li>
+<li>[API for Catalog]({{ baseUrl }}/catalog.html)</li>
+<li>[API for Booking]({{ baseUrl }}/booking.html)</li>
+<li>[API for Search]({{ baseUrl }}/search.hmtl)</li>
 </ol>
 <h3 id="swagger-sandbox-tool">Swagger sandbox tool</h3>
 <p><a href="https://api.musement.com/documentation"><a href="https://api.musement.com/documentation">https://api.musement.com/documentation</a></a></p>
@@ -84,7 +84,7 @@
 <h2 id="generic-info">Generic info</h2>
 <h3 id="language">Language</h3>
 <p>Musement content is available in different languages. You can specify the language using the standard header <code>Accept-Language</code> If the content is not available for the language requested the English version is returned</p>
-<h5 id="examples">Examples</h5>
+<h5><em>Example</em></h5>
 <p>Request information for a specific city in spanish.</p>
 <pre><code>GET /api/v3/cities/2
 Accept-Language: es</code></pre>
@@ -150,7 +150,7 @@ Accept-Language: es</code></pre>
 </tr>
 </tbody>
 </table>
-<h5 id="examples-1">Examples</h5>
+<h5><em>Example</em></h5>
 <p>Getting prices in Swedish Krone</p>
 <pre><code>GET /api/v3/events/1/dates/2016-02-10
 X-Musement-Currency: SEK</code></pre>
@@ -173,7 +173,7 @@ X-Musement-Currency: USD</code></pre>
 <p>The corrent latest verision is: <code>3.0.0</code></p>
 <p>When you start a new project that uses <em>Musement API</em> set <code>X-Musement-Version</code> to the current latest version. This assure that the model in the response will be stable with time. If you don't set the header the server will alwayas returns the latest version. </p>
 <p>When a new version is released you can check the documentation and choose to upgrade your header or remain with your version. You can also specify different version for different calls. But we discourage this practice.</p>
-<h5 id="examples-2">Examples</h5>
+<h5><em>Example</em></h5>
 <pre><code>GET /api/v3/events/1/dates/2016-02-10
 X-Musement-Version: 3.0.0</code></pre>
                     </div>
