@@ -11,7 +11,7 @@ At the moment we support _Client credentials_ and _Resource Owner Password Crede
 As described in the previou article this grant type is useful if you don't have any customer context. Obtain an `Access Token` is very easy and you just need to send a request to the endpoint `/api/v3/login` specifing you `client_id` and `client_secret` 
 * client_secret
    
-#### Example
+##### _Example_
 
 ```
 GET /api/v3/login?client_id={client_id}&client_secret={client_secret}&grant_type=client_credentials
@@ -25,7 +25,7 @@ Use this if you want to authenticate a specific customer in a way to allow him t
 
 The endpoint is again `/api/v3/login` but this time you need to specify also the `username` and the `password` for the user you want to authenticate
 
-#### Example
+##### _Example_
 
 ```
 GET /api/v3/login?client_id={client_id}&client_secret={client_secret}&grant_type=password&username={username}&password={password}
@@ -35,7 +35,7 @@ GET /api/v3/login?client_id={client_id}&client_secret={client_secret}&grant_type
 
 All the authentication requests, despite the grant type, has the same response. The information you need to save are `access_token` and `refresh_token`. The value of `access_token` is the value you have to pass in the `Authentication` header in all your request.
 
-#### Example
+##### _Example_
 
 A response for an authentication request
 
