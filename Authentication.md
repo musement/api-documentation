@@ -4,7 +4,7 @@ Authentication is required for each request. With it we can grant you the right 
 
 For a good explanation of OAUTH2 see this page on [DigitalOcean](https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2)
 
-At the moment we support `Client credentials` and `Resource Owner Password Credentials`. 
+At the moment we support _Client credentials_ and _Resource Owner Password Credentials_. 
 
 ### Client Credentials
 
