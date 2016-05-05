@@ -1,29 +1,27 @@
-## 3. API for Booking
+## Booking
+
+The booking process allows you to book an event. Once you have found the _Event_ you want to book, using the search or browsing the catalogues, for a successful booking you have to follow this flow.
+
+We assume you already retrieved the all the infomation for the _Event_ using the call:
+
+```
+GET /api/v3/events/{id}
+```
+
+### Booking flow
 
 ![Booking](http://musement.s3.amazonaws.com/documentation_images/booking.png)
 
-For a successful booking you have to: 
+1. Search for the available dates for the _Event_. | [Test it](https://thack.musement.com/documentation#get--api-v3-events-{id}-dates.{_format})
 
-1. ```GET /events/{id}```
-2. ```GET /events/{id}/dates```
-3. ```GET /events/{id}/dates/{YYYY-MM-DD}```
-4. ```POST /cart```
-5. Create the order
-6. Finalize the order with or without payment (depending on your contract)
-7. Retrieve the voucher
+Returns a list of all days with availabitiy for a specific _Event_ over a period of time.
 
-### 3.1 GET Event
+#### _Request_
+```
+GET /api/v3/events/{id}/dates
+```
 
-To navigate the catalog refer to [paragraph 2] (https://github.com/musement/api-documentation/blob/master/Catalog.md). 
-
-### 3.2 Get available dates for a specific event
-
-**DOCs**: [http://api.musement.com/documentation#get--api-v3-events-{id}-dates.{_format}]
-(http://api.musement.com/documentation#get--api-v3-events-{id}-dates.{_format})
-
-Returns a list of all days with availabitiy for a specific event over a period of time.
-
-To specify the period you can use the parameters `from_date` and `end_date`. If none of this data parameters is specified `from_date` is set to the current day. If `end_date` is not specified then `end_date` is set same as `from_date`
+To specify the period you can use the parameters `from_date` and `end_date`. If none of this parameters are specified `from_date` is set to the current day. If `end_date` is not specified then `end_date` is set same as `from_date`.
 
 **Examples:**
 
@@ -33,7 +31,6 @@ To specify the period you can use the parameters `from_date` and `end_date`. If 
 
 ```
 GET /api/v3/events/497/dates
-Authorization: Bearer HereTheBearerFromOauth
 ```
 
 *** With parameters *** 
@@ -42,7 +39,6 @@ Search for available dates for dicember 2016
 
 ```
 GET /api/v3/events/497/dates?from_date=2016-12-01&end_date=2016-12-31
-Authorization: Bearer HereTheBearerFromOauth
 ```
 
 **Example Response:**
@@ -60,16 +56,20 @@ The response is a collection of date
 ]
 ```
 
-### 3.3 Tickets available for a specific event and day
+### 3 Find tickets available for selected day
 
-Return a list of all available tickets for a specific day. The response is a collection of items containing : 
+Once you found the date the next step is search for all available tickets for that day. Please note that for the same event different days can have different type of tickets.
 
- - `datetime` - The date and time. For a single day an event can start more than once.
- - `seats` - A collection of all available `seats`. Here the seat structure
- - `open_ticket` - If true the event is an open ticket
+#### _Request_
+```GET /events/{id}/dates/{YYYY-MM-DD}``` | [Test it]
+
+The response is a collection of items containing : 
+
+ - `datetime` - The date and time. For a single day an event can have more starting time.
+ - `seats` - A collection of all available `seats` (AKA `tickets`). Here the seat structure
+ - `open_ticket` - If true the event is an `Open ticket`
  - `availability` - Number of place avaialble
  - `languages` - The event can be available in different language. Different time can have different languages
-
 
 `seat` structure:
 
@@ -77,6 +77,8 @@ Return a list of all available tickets for a specific day. The response is a col
  - `price_tag` - Give info about the person the ticket is for. Ticket type (`name`) and type of person (`group`) the `seat` is for. Please note that for the same date and time the combination of `name` and `group`  is unique but you can have more seat with the same `group` or `name`
  - `max_buy` and `min_buy` - Maximum and minimum number of ticket buyiable in a single transaction
  - `raw_price` and `retail_price` - Internal and public price
+
+#### _Example_
 
 ```GET /api/v3/events/497/dates/2016-01-15```
 
@@ -117,23 +119,105 @@ Response
 ]
 ```
 
-### 3.4 Cart APIs
+### 3 Create the Cart
 
-Cart APIs are useful to check the amount of the order, add promotions and discounts and check ticket availability. Every time you add something to it we block the ticket and calculate the final price of the order.
+To create a new _Cart_ you just need to send a `POST` to the `/api/v3/carts` endpoint. You can see the details [here](http://api.musement.com/documentation#post--api-v3-carts.{_format})
 
-#### 3.4.1 POST /carts - Create a new Cart
+All calls to cart enpoint return a _Cart_. See `GET /api/v3/carts/{id}` for details. 
 
-DOCs: http://api.musement.com/documentation#post--api-v3-carts.{_format}
+#### Create a new cart
 
-Check Documentation for Request Payload. 
+The information you need to pass in the payload are divided in two groups. Those related to the _Tickets_ and those related to the _Customer_.
 
-NB. The Product id is the SeatPrice id. 
+Here a payload to create a cart with `2` items for the _Product_ `8216618`. The `product.id` is the `SeatPrice.id` returned in the previous call. 
 
-#### 3.4.2 GET /cart/{id} - Retrive the cart
-#### 3.4.3 PUT/PATCH /cart/{id} - To Update the cart
+```
+POST /api/v3/carts
 
-With this API you can update your cart, adding or removing tickets or populating it with customer info.
+{
+    "tickets":[
+        {
+            "product": {
+                "id": 8216618
+            },
+            "quantity":2,
+            "metadata":{"language":"es"}
+        }
+    ]
+}
+```
+
+You can also add more items with a single call
+
+```
+POST /api/v3/carts
+
+{
+    "tickets":[
+        {
+            "product": {
+                "id": 8216618
+            },
+            "quantity":2,
+            "metadata":{"language":"es"}
+        },
+	{
+            "product": {
+                "id": 7372773
+            },
+            "quantity":12
+        },     
+    ]
+}
+```
+
+#### Add info to a cart
+
+To add info to a cart you can use `PATCH`. So for instance to add the `Customer` you can use 
+
+```
+PATCH /cart/1
+
+{
+  "customer" : {
+        "email": "guest136a@fakemail.com",
+        "firstname": "Guest136a",
+        "lastname": "surname136a",
+        "country": {
+          "id": 123
+        }
+  }
+}
+```
+
+**Note** For the list of available countries [see](https://thack.musement.com/documentation#get--api-v3-countries.{_format})
+
+#### Update info in a cart
+
+To completely replace the data in the cart you can the `PUT` verbs and pass new payload.
+
+```
+PUT /cart/1
+
+{
+    "tickets":[
+        {
+            "product": {
+                "id": 8216618
+            },
+            "quantity":3,
+            "metadata":{"language":"fr"}
+        }     
+    ]
+}
+```
+
 The main difference between PUT and PATCH is that with the first you will update the model of the cart with the body you send, with the PATCH you will update just the field you sent in body. 
+
+#### Retrive the cart
+
+#### _Request_
+```GET /api/v3/cart/{id}```
 
 For example - in the cart: 
 
@@ -170,22 +254,6 @@ For example - in the cart:
 }
 ```
 
-If you PATCH it with this request:
-
-```
-PATCH /cart/1
-BODY:
-{
-  "customer" : {
-        "email": "guest136a@fakemail.com",
-        "firstname": "Guest136a",
-        "lastname": "surname136a",
-        "country": {
-          "id": 123
-        }
-  }
-}
-```
 
 You will get the cart with the customer info ```GET /cart/1```:
 
@@ -233,9 +301,6 @@ You will get the cart with the customer info ```GET /cart/1```:
 
 Check, all original data is still there plus the new customer info.
 
-
-
-#### 3.4.3 DELETE Cart - Delete the cart
 #### 3.4.4 Customer Info needed for cart
 
 Docs: http://api.musement.com/documentation#get--api-v3-carts-{id}-form.{_format}
