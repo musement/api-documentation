@@ -81,10 +81,71 @@
 <li><em>Production</em>: <a href="https://api.musement.com/api/v3">https://api.musement.com/api/v3</a></li>
 <li><em>QA-testing</em>: <a href="https://api-qa.musement.com/api/v3">https://api-qa.musement.com/api/v3</a></li>
 </ul>
-<h3 id="shared-headers">Shared Headers</h3>
+<h3 id="generic-info">Generic info</h3>
+<h4 id="headers">Headers</h4>
+<p><code>Accept-Language</code> - Change the language of the response. </p>
+<p><code>X-Musement-Currency</code> - Change the currency in the response. </p>
+<h5 id="availables-currencies">Availables currencies</h5>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th style="text-align: center;">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EUR</td>
+<td style="text-align: center;">Euro (default)</td>
+</tr>
+<tr>
+<td>USD</td>
+<td style="text-align: center;">USA dollar</td>
+</tr>
+<tr>
+<td>GBP</td>
+<td style="text-align: center;">Pound sterling</td>
+</tr>
+<tr>
+<td>AED</td>
+<td style="text-align: center;">Dirham</td>
+</tr>
+<tr>
+<td>SEK</td>
+<td style="text-align: center;">Swedish krone</td>
+</tr>
+<tr>
+<td>DKK</td>
+<td style="text-align: center;">Danish krone</td>
+</tr>
+<tr>
+<td>AUD</td>
+<td style="text-align: center;">Australian dollar</td>
+</tr>
+<tr>
+<td>CAD</td>
+<td style="text-align: center;">Canadian dollar</td>
+</tr>
+</tbody>
+</table>
+<h5 id="examples">Examples</h5>
+<pre><code>GET /api/v3/events/1/dates/2016-02-10
+X-Musement-Currency: EUR</code></pre>
+<pre><code>...
+  "retail_price": {
+    "currency": "EUR",
+    "value": 40,
+    "formatted_value": "€ 40.00"
+  }</code></pre>
+<pre><code>GET /api/v3/events/1/dates/2016-02-10
+X-Musement-Currency: USD</code></pre>
+<pre><code>...
+  "retail_price": {
+    "currency": "USD",
+    "value": 37,
+    "formatted_value": "$ 37.00"
+  }</code></pre>
 <ul>
-<li>Accept-Language</li>
-<li>X-Musement-Currency</li>
 <li>X-Musement-Version</li>
 </ul>
 <p>Note: when you are creating a new project with Musement API set X-Musement-Version to the current latest version. You can check it at the top of this document. Once you have set the version you will remain with a stable data model. When a new version is released you can check the documentation and choose to upgrade your header or remain with your version. If you don't set the header it will call by default the latest version and it might change the data model without you knowing it. </p>
