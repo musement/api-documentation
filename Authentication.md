@@ -2,42 +2,42 @@
 
 Authentication is required for each request. With it we can grant you the right permissions to navigate and operate our data. We follow the oAuth2 standard [RFC-6749](https://tools.ietf.org/html/rfc6749) for authentication.
 
-We have support for: 
+For a good explanation of OAUTH2 see this page on [DigitalOcean](https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2)
 
-* Client Credentials
-* Resource Owner Password Credentials
+At the moment we support `Client credentials` and `Resource Owner Password Credentials`. 
 
-### 1.1 Request
+### Client Credentials
 
-#### 1.1.1 Client Credentials
-
-Use this to authenticate yourself with your integration credentials. You will have to use two values:
-
-* client_id 
+As described in the previou article this grant type is useful if you don't have any customer context. Obtain an `Access Token` is very easy and you just need to send a request to the endpoint `/api/v3/login` specifing you `client_id` and `client_secret` 
 * client_secret
    
+#### Example
+
 ```
 GET /api/v3/login?client_id={client_id}&client_secret={client_secret}&grant_type=client_credentials
 ```
 
-#### 1.1.2 Resource Owner Password Credentials
+And you'll get an access token not connect to a user.
 
-  Use this if you want to authenticate a specific customer in a way to allow him to access to his information (like previous orders, profile, preferences, etc)
+### Resource Owner Password Credentials
 
-In this case you need these values:
+Use this if you want to authenticate a specific customer in a way to allow him to access to his information (like previous orders, profile, preferences, etc)
 
-* client_id 
-* client_secret
-* username
-* password
+The endpoint is again `/api/v3/login` but this time you need to specify also the `username` and the `password` for the user you want to authenticate
+
+#### Example
 
 ```
 GET /api/v3/login?client_id={client_id}&client_secret={client_secret}&grant_type=password&username={username}&password={password}
 ```  
 
-### 1.2 Response  
+### Authentication response  
 
-In both cases (if you grant type credentials or password) the response will be:
+All the authentication requests, despite the grant type, has the same response. The information you need to save are `access_token` and `refresh_token`. The value of `access_token` is the value you have to pass in the `Authentication` header in all your request.
+
+#### Example
+
+A response for an authentication request
 
 ```
 {
@@ -49,12 +49,10 @@ In both cases (if you grant type credentials or password) the response will be:
 } 
 ```
 
-You have to use the ```access_token``` for each request, for example to ```GET Cities```:
+Request with the `Authorization` header.
 
 ```
 GET /api/v3/cities HTTP/1.1
 Host: api.musement.com
 Authorization: Bearer MWFkZWE5YWUyZTZiNzM3NzFjMzkwZmI3ZDgyM2E2ZWQ0YWFmNDQ1NTM4ZDM4Mzc0MDkyNzMyZWMzNWNkNjQzOA
 ```
-
-Next step - [API for Catalog] (https://github.com/musement/api-documentation/blob/master/Catalog.md)
