@@ -28,7 +28,7 @@ Clicking on the links below you can find all step by step instructions that you 
 
 Musement content is available in different languages. You can specify the language using the standard header `Accept-Language` If the content is not available for the language requested the English version is returned
 
-##### Examples
+##### _Example_
 
 Request information for a specific city in spanish.
 
@@ -74,7 +74,7 @@ To change the currency of the prices you must use `X-Musement-Currency`
 | AUD           | Australian dollar  |
 | CAD           | Canadian dollar    |
 
-##### Examples
+##### _Example_
 
 Getting prices in Swedish Krone
 
@@ -116,7 +116,7 @@ When you start a new project that uses _Musement API_ set `X-Musement-Version` t
 
 When a new version is released you can check the documentation and choose to upgrade your header or remain with your version. You can also specify different version for different calls. But we discourage this practice.
 
-##### Examples
+##### _Example_
 
 ```
 GET /api/v3/events/1/dates/2016-02-10
