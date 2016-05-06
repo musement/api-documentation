@@ -29,3 +29,6 @@ menu:
         search:
             text: Search
             relativeUrl: search.html
+        glossary:
+            text: Glossary
+            relativeUrl: glossary.html
