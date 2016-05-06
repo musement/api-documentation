@@ -172,26 +172,25 @@
 <p>Request <code>POST /api/v3/payments/no-payment</code></p>
 <h4 id="with-payment-flow">With Payment Flow</h4>
 <h5 id="braintree-payments">Braintree Payments</h5>
-<p>You have to integrate Braintree SDK</p>
-<p>Note: in QA endpoint use credit card numbers contained in this link <a href="https://developers.braintreepayments.com/reference/general/testing/ruby#credit-card-numbers">https://developers.braintreepayments.com/reference/general/testing/ruby#credit-card-numbers</a> </p>
+<p>You have to integrate <a href="https://developers.braintreepayments.com/">Braintree SDK</a></p>
+<p><strong>Note</strong> When testing use credit card numbers contained in this link <a href="https://developers.braintreepayments.com/reference/general/testing/ruby#credit-card-numbers">https://developers.braintreepayments.com/reference/general/testing/ruby#credit-card-numbers</a> </p>
 <h6 id="step-1">Step 1</h6>
-<p>GET the token</p>
-<p>Request <code>POST /api/v3/payments/braintree/token</code>
-Response <code>{ "nonce": "eyJ2ZXJzaW9uIjoyLCJhdXRob3JpemF0aW9uRmluZ2VycHJpbnQiOiI3MDVjY2JlZThmZDRkNzI3MW" }</code></p>
-<h6 id="step-2">Step 2</h6>
-<p>Using Braintree SDK, ask the user for payment information (credit card, paypal etc). For more details please visit: <a href="https://developers.braintreepayments.com/">https://developers.braintreepayments.com/</a></p>
-<h6 id="step-3">Step 3</h6>
-<p>After the user fills out the braintree payment form, ask us to process the payment and close the order </p>
-<p>Request <code>POST /api/v3/payments/braintree/payment</code></p>
-<p>Request Body </p>
+<p>Get the nonce</p>
+<pre><code>POST /api/v3/payments/braintree/token</code></pre>
+<p>Response </p>
 <pre><code>{
-  "nonce" : "nonce_text",
+  "nonce": "eyJ2ZXJzaW9uIjoyLCJhdXRob3JpemF0aW9uRmluZ2VycHJpbnQiOiI3MDVjY2JlZThmZDRkNzI3MW" 
+}</code></pre>
+<h6 id="step-2">Step 2</h6>
+<p>Using Braintree SDK, ask the user for payment information (credit card, paypal etc). Look at the <a href="https://developers.braintreepayments.com/">Braintree documentation</a> for more details.</p>
+<h6 id="step-3">Step 3</h6>
+<p>After the user fills out the Braintree payment form, ask us to process the payment and close the order by sending a </p>
+<pre><code>POST /api/v3/payments/braintree/payment
+
+{
+  "nonce" : "nonce_string",
   "orderId" : 123456
 }</code></pre>
-<h3 id="37-retrieve-the-voucher">3.7 Retrieve the voucher</h3>
-<p>If you used the login 2.1.2 you can retrieve the voucher with the Request</p>
-<p><code>GET /customer/me/orders</code></p>
-<p>Otherwise we will send it to your email address.</p>
                     </div>
 
                     <footer>
