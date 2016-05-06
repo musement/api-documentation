@@ -95,7 +95,7 @@ X-Musement-Currency: SEK
   }
 ```
 
-and is US dollars
+and in US dollars
 
 ```
 GET /api/v3/events/1/dates/2016-02-10
@@ -115,9 +115,9 @@ X-Musement-Currency: USD
 
 The current latest version is: `3.0.0`
 
-When you start a new project that uses _Musement API_ set `X-Musement-Version` to the current latest version. This assure that the model in the response will be stable with time. If you don't set the header the server will alwayas returns the latest version. 
+When you start a new project that uses _Musement API_ set `X-Musement-Version` to the current latest version. This assures that the model in the response will be stable with time. If you don't set the header the server will always return the latest version. 
 
-When a new version is released you can check the documentation and choose to upgrade your header or remain with your version. You can also specify different version for different calls. But we discourage this practice.
+When a new version is released you can check the documentation and choose to upgrade your header or remain with your version. You can also specify different versions for different calls, but we discourage this practice.
 
 ##### _Example_
 
