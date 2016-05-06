@@ -9,9 +9,11 @@ The Musement API gives you a set of endpoints to get all the information about o
 Clicking on the links below you can find all step by step instructions that you need
 
 1. [Authentication](http://thack.musement.com/thack_api/authentication.html)
-2. [The catalog](http://thack.musement.com/thack_api/catalog.html)
+2. [Catalog](http://thack.musement.com/thack_api/catalog.html)
 3. [Booking](http://thack.musement.com/thack_api/booking.html)
-4. [Search the catalog](http://thack.musement.com/thack_api/search.html)
+4. [Cart](http://thack.musement.com/thack_api/cart.html)
+5. [Customer](http://thack.musement.com/thack_api/customer.html)
+6. [Search the catalog](http://thack.musement.com/thack_api/search.html)
 
 ### Swagger sandbox tool
 
