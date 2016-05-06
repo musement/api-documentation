@@ -153,35 +153,59 @@
     ]
   }
 ]</code></pre>
-<h3 id="35-create-the-order">3.5 Create the order</h3>
+<h3 id="create-the-order">Create the order</h3>
 <p>When the cart is completed (<strong>with customer info filled in</strong>) and you want to finalize it (proceed with payments and check the availability one last time) </p>
-<p><code>POST /api/v3/order</code></p>
-<h3 id="36-finalize-the-order">3.6 Finalize the order</h3>
-<p>If the order amount is equal to 0 or you use your payment gateway, use the flow without payment (ask for activation). Otherwise follow the Payment flow in 4.4.2.</p>
-<h4 id="361-without-payment-flow">3.6.1 Without Payment Flow</h4>
-<p>Request <code>POST /api/v3/payments/no-payment</code></p>
-<h4 id="362-with-payment-flow">3.6.2 With Payment Flow</h4>
-<h5 id="braintree-payments">Braintree Payments</h5>
-<p>You have to integrate Braintree SDK</p>
-<p>Note: in QA endpoint use credit card numbers contained in this link <a href="https://developers.braintreepayments.com/reference/general/testing/ruby#credit-card-numbers">https://developers.braintreepayments.com/reference/general/testing/ruby#credit-card-numbers</a> </p>
-<h6 id="step-1">Step 1</h6>
-<p>GET the token</p>
-<p>Request <code>POST /api/v3/payments/braintree/token</code>
-Response <code>{ "nonce": "eyJ2ZXJzaW9uIjoyLCJhdXRob3JpemF0aW9uRmluZ2VycHJpbnQiOiI3MDVjY2JlZThmZDRkNzI3MWQ2NTJjZDVjOTZjZDAyOTA5YWEzZDA4ZTJhN2ExNDVlNzc3MTI3MWYxMTUzMDIxfGNyZWF0ZWRfYXQ9MjAxNi0wMi0wM1QxMzowNzowOS43NjQ5NDQ2NjIrMDAwMFx1MDAyNm1lcmNoYW50X2lkPXE5MjdzdGt5cjRtZHc1MnhcdTAwMjZwdWJsaWNfa2V5PWNzMjJkMjJzbjc2ano4YzYiLCJjb25maWdVcmwiOiJodHRwczovL2FwaS5icmFpbnRyZWVnYXRld2F5LmNvbTo0NDMvbWVyY2hhbnRzL3E5MjdzdGt5cjRtZHc1MngvY2xpZW50X2FwaS92MS9jb25maWd1cmF0aW9uIiwiY2hhbGxlbmdlcyI6WyJjdnYiXSwiZW52aXJvbm1lbnQiOiJwcm9kdWN0aW9uIiwiY2xpZW50QXBpVXJsIjoiaHR0cHM6Ly9hcGkuYnJhaW50cmVlZ2F0ZXdheS5jb206NDQzL21lcmNoYW50cy9xOTI3c3RreXI0bWR3NTJ4L2NsaWVudF9hcGkiLCJhc3NldHNVcmwiOiJodHRwczovL2Fzc2V0cy5icmFpbnRyZWVnYXRld2F5LmNvbSIsImF1dGhVcmwiOiJodHRwczovL2F1dGgudmVubW8uY29tIiwiYW5hbHl0aWNzIjp7InVybCI6Imh0dHBzOi8vY2xpZW50LWFuYWx5dGljcy5icmFpbnRyZWVnYXRld2F5LmNvbSJ9LCJ0aHJlZURTZWN1cmVFbmFibGVkIjpmYWxzZSwicGF5cGFsRW5hYmxlZCI6dHJ1ZSwicGF5cGFsIjp7ImRpc3BsYXlOYW1lIjoiTXVzZW1lbnQiLCJjbGllbnRJZCI6IkFkcTdxSTJrS2NNTEFIQjRGRDRac1JxNC13VGp0eUxnckhRdllSTGMtQ1k0MGFmZlh2dUYwUHpLRUJSSVZfRktJeTVaNmJvREZpY1A2ZmIzIiwicHJpdmFjeVVybCI6Imh0dHBzOi8vd3d3Lm11c2VtZW50LmNvbS9lbi9wL3ByaXZhY3kiLCJ1c2VyQWdyZWVtZW50VXJsIjoiaHR0cHM6Ly93d3cubXVzZW1lbnQuY29tL2VuL3AvdGVybXMtY29uZGl0aW9ucyIsImJhc2VVcmwiOiJodHRwczovL2Fzc2V0cy5icmFpbnRyZWVnYXRld2F5LmNvbSIsImFzc2V0c1VybCI6Imh0dHBzOi8vY2hlY2tvdXQucGF5cGFsLmNvbSIsImRpcmVjdEJhc2VVcmwiOm51bGwsImFsbG93SHR0cCI6ZmFsc2UsImVudmlyb25tZW50Tm9OZXR3b3JrIjpmYWxzZSwiZW52aXJvbm1lbnQiOiJsaXZlIiwidW52ZXR0ZWRNZXJjaGFudCI6ZmFsc2UsImJyYWludHJlZUNsaWVudElkIjoiQVJLcllSRGgzQUdYRHpXN3NPXzNiU2txLVUxQzdIR191V05DLXo1N0xqWVNETlVPU2FPdElhOXE2VnBXIiwiYmlsbGluZ0FncmVlbWVudHNFbmFibGVkIjpmYWxzZSwibWVyY2hhbnRBY2NvdW50SWQiOiJtdXNlbWVudEVVUiIsImN1cnJlbmN5SXNvQ29kZSI6IkVVUiJ9LCJjb2luYmFzZUVuYWJsZWQiOmZhbHNlLCJtZXJjaGFudElkIjoicTkyN3N0a3lyNG1kdzUyeCIsInZlbm1vIjoib2ZmIiwiYXBwbGVQYXkiOnsic3RhdHVzIjoicHJvZHVjdGlvbiIsImNvdW50cnlDb2RlIjoiVVMiLCJjdXJyZW5jeUNvZGUiOiJFVVIiLCJtZXJjaGFudElkZW50aWZpZXIiOiJtZXJjaGFudC5jb20ubXVzZW1lbnQubXVzZW1lbnRwcm9kIiwic3VwcG9ydGVkTmV0d29ya3MiOlsidmlzYSIsIm1hc3RlcmNhcmQiXX18" }</code></p>
-<h6 id="step-2">Step 2</h6>
-<p>Using Braintree SDK, ask the user for payment information (credit card, paypal etc). For more details please visit: <a href="https://developers.braintreepayments.com/">https://developers.braintreepayments.com/</a></p>
-<h6 id="step-3">Step 3</h6>
-<p>After the user fills out the braintree payment form, ask us to process the payment and close the order </p>
-<p>Request <code>POST /api/v3/payments/braintree/payment</code></p>
-<p>Request Body </p>
-<pre><code>{
-  "nonce" : "nonce_text",
-  "orderId" : 123456
-}</code></pre>
-<h3 id="37-retrieve-the-voucher">3.7 Retrieve the voucher</h3>
-<p>If you used the login 2.1.2 you can retrieve the voucher with the Request</p>
-<p><code>GET /customer/me/orders</code></p>
-<p>Otherwise we will send it to your email address.</p>
+<p>```POST /api/v3/orders</p>
+<p>{
+&quot;cart_id&quot;: 123456
+}</p>
+<pre><code>
+### Finalize the order
+
+If the order amount is equal to 0 or you use your payment gateway, use the flow without payment (ask for activation). Otherwise follow the Payment flow in 4.4.2.
+
+#### Without Payment Flow
+
+Request ```POST /api/v3/payments/no-payment```
+
+#### With Payment Flow
+
+##### Braintree Payments
+
+You have to integrate Braintree SDK
+
+Note: in QA endpoint use credit card numbers contained in this link https://developers.braintreepayments.com/reference/general/testing/ruby#credit-card-numbers 
+
+###### Step 1 
+GET the token
+
+Request ```POST /api/v3/payments/braintree/token```
+Response ```{ "nonce": "eyJ2ZXJzaW9uIjoyLCJhdXRob3JpemF0aW9uRmluZ2VycHJpbnQiOiI3MDVjY2JlZThmZDRkNzI3MWQ2NTJjZDVjOTZjZDAyOTA5YWEzZDA4ZTJhN2ExNDVlNzc3MTI3MWYxMTUzMDIxfGNyZWF0ZWRfYXQ9MjAxNi0wMi0wM1QxMzowNzowOS43NjQ5NDQ2NjIrMDAwMFx1MDAyNm1lcmNoYW50X2lkPXE5MjdzdGt5cjRtZHc1MnhcdTAwMjZwdWJsaWNfa2V5PWNzMjJkMjJzbjc2ano4YzYiLCJjb25maWdVcmwiOiJodHRwczovL2FwaS5icmFpbnRyZWVnYXRld2F5LmNvbTo0NDMvbWVyY2hhbnRzL3E5MjdzdGt5cjRtZHc1MngvY2xpZW50X2FwaS92MS9jb25maWd1cmF0aW9uIiwiY2hhbGxlbmdlcyI6WyJjdnYiXSwiZW52aXJvbm1lbnQiOiJwcm9kdWN0aW9uIiwiY2xpZW50QXBpVXJsIjoiaHR0cHM6Ly9hcGkuYnJhaW50cmVlZ2F0ZXdheS5jb206NDQzL21lcmNoYW50cy9xOTI3c3RreXI0bWR3NTJ4L2NsaWVudF9hcGkiLCJhc3NldHNVcmwiOiJodHRwczovL2Fzc2V0cy5icmFpbnRyZWVnYXRld2F5LmNvbSIsImF1dGhVcmwiOiJodHRwczovL2F1dGgudmVubW8uY29tIiwiYW5hbHl0aWNzIjp7InVybCI6Imh0dHBzOi8vY2xpZW50LWFuYWx5dGljcy5icmFpbnRyZWVnYXRld2F5LmNvbSJ9LCJ0aHJlZURTZWN1cmVFbmFibGVkIjpmYWxzZSwicGF5cGFsRW5hYmxlZCI6dHJ1ZSwicGF5cGFsIjp7ImRpc3BsYXlOYW1lIjoiTXVzZW1lbnQiLCJjbGllbnRJZCI6IkFkcTdxSTJrS2NNTEFIQjRGRDRac1JxNC13VGp0eUxnckhRdllSTGMtQ1k0MGFmZlh2dUYwUHpLRUJSSVZfRktJeTVaNmJvREZpY1A2ZmIzIiwicHJpdmFjeVVybCI6Imh0dHBzOi8vd3d3Lm11c2VtZW50LmNvbS9lbi9wL3ByaXZhY3kiLCJ1c2VyQWdyZWVtZW50VXJsIjoiaHR0cHM6Ly93d3cubXVzZW1lbnQuY29tL2VuL3AvdGVybXMtY29uZGl0aW9ucyIsImJhc2VVcmwiOiJodHRwczovL2Fzc2V0cy5icmFpbnRyZWVnYXRld2F5LmNvbSIsImFzc2V0c1VybCI6Imh0dHBzOi8vY2hlY2tvdXQucGF5cGFsLmNvbSIsImRpcmVjdEJhc2VVcmwiOm51bGwsImFsbG93SHR0cCI6ZmFsc2UsImVudmlyb25tZW50Tm9OZXR3b3JrIjpmYWxzZSwiZW52aXJvbm1lbnQiOiJsaXZlIiwidW52ZXR0ZWRNZXJjaGFudCI6ZmFsc2UsImJyYWludHJlZUNsaWVudElkIjoiQVJLcllSRGgzQUdYRHpXN3NPXzNiU2txLVUxQzdIR191V05DLXo1N0xqWVNETlVPU2FPdElhOXE2VnBXIiwiYmlsbGluZ0FncmVlbWVudHNFbmFibGVkIjpmYWxzZSwibWVyY2hhbnRBY2NvdW50SWQiOiJtdXNlbWVudEVVUiIsImN1cnJlbmN5SXNvQ29kZSI6IkVVUiJ9LCJjb2luYmFzZUVuYWJsZWQiOmZhbHNlLCJtZXJjaGFudElkIjoicTkyN3N0a3lyNG1kdzUyeCIsInZlbm1vIjoib2ZmIiwiYXBwbGVQYXkiOnsic3RhdHVzIjoicHJvZHVjdGlvbiIsImNvdW50cnlDb2RlIjoiVVMiLCJjdXJyZW5jeUNvZGUiOiJFVVIiLCJtZXJjaGFudElkZW50aWZpZXIiOiJtZXJjaGFudC5jb20ubXVzZW1lbnQubXVzZW1lbnRwcm9kIiwic3VwcG9ydGVkTmV0d29ya3MiOlsidmlzYSIsIm1hc3RlcmNhcmQiXX18" }```
+
+###### Step 2 
+
+Using Braintree SDK, ask the user for payment information (credit card, paypal etc). For more details please visit: https://developers.braintreepayments.com/
+
+###### Step 3 
+
+After the user fills out the braintree payment form, ask us to process the payment and close the order 
+
+Request ```POST /api/v3/payments/braintree/payment```
+
+Request Body </code></pre>
+<p>{
+&quot;nonce&quot; : &quot;nonce_text&quot;,
+&quot;orderId&quot; : 123456
+}</p>
+<pre><code>
+
+### 3.7 Retrieve the voucher
+
+If you used the login 2.1.2 you can retrieve the voucher with the Request
+
+```GET /customer/me/orders```
+
+Otherwise we will send it to your email address.</code></pre>
                     </div>
 
                     <footer>
