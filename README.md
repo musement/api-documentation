@@ -67,7 +67,7 @@ To change the currency of the prices you must use `X-Musement-Currency`
 | Code          | Name               |
 | ------------- |:------------------:|
 | EUR           | Euro (default)     |
-| USD           | USA dollar         |
+| USD           | US dollar          |
 | GBP           | Pound sterling     |
 | AED           | Dirham             |
 | SEK           | Swedish krone      |
@@ -93,7 +93,7 @@ X-Musement-Currency: SEK
   }
 ```
 
-and is USA dollars
+and is US dollars
 
 ```
 GET /api/v3/events/1/dates/2016-02-10
