@@ -1,14 +1,14 @@
 ## Catalog
 
-The key part of the Musement catalogue are events. Events are organized by type using _Categories_ and _Verticals_ and by geographical location using _Cities_ and _Venues_.
+The key part of the Musement catalogue is events. Events are organized by type using _Categories_ and _Verticals_ and by geographical location using _Cities_ and _Venues_.
 
-To find events in the catalogue you can use the _Search_ or you can navigate it by using some predefined collection.
+To find events in the catalogue you can use the _Search_ or you can navigate to it by using some predefined collection.
 
 ![Catalog](http://musement.s3.amazonaws.com/documentation_images/catalog.png)
 
 ### Event endpoints
 
-All these enpoint return events. All these endpoint support different parameters that allow you to further filter the events.
+All these endpoints return events. All these endpoints support different parameters that allow you to further filter the events.
 
 * ```GET /api/v3/verticals/{id}/events``` | All the events for a specific _Vertical_  | [Test it](http://thack.musement.com/documentation#get--api-v3-verticals-{id}-events.{_format})
 * ```GET /api/v3/categories/{id}/events``` | All the events for a specific _Category_ | [Test it](http://thack.musement.com/documentation#get--api-v3-categories-{id}-events.{_format})
