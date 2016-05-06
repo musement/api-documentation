@@ -93,7 +93,7 @@
 <p><strong>Event</strong>: a tour, ticket, or general product to purchase.</p>
 </li>
 <li>
-<p><strong>Open ticket</strong>: the event does not have an exact starting time. Musement events can have a specific date/time, e.g. a football match, or can be valid for a limited time span, e.g. an entrance ticket valid for the next 365 days. In the first case the property open_ticket would be &quot;no&quot;, in the second case would be &quot;yes&quot;. The API dates for open tickets will always return the last day of availability no matter the range of days you passed. This property is printed at the end of each &quot;Single date&quot; API request.</p>
+<p><strong>Open ticket</strong>: the event does not have an exact starting time. Musement events can have a specific date/time, e.g. a football match, or can be valid for a limited time span, e.g. an entrance ticket valid for the next 365 days. There are two types of open tickets: tickets valid until a specifc date and tickets valid for a specific amount of time after purchase. The API dates for open tickets will always return the last day of availability no matter the range of days you passed. This property is printed at the end of each &quot;Single date&quot; API request.</p>
 </li>
 <li>
 <p><strong>Passenger</strong>: the person who will use the ticket. In any cart there can be multiple passengers or none. Not every product requires info about passengers.</p>
@@ -101,7 +101,10 @@
 <li>
 <p><strong>Seat price</strong>: this is a single product that can be added to the cart. The seat price identifies a specific time slot, with a specific ticket holder for a specific event.</p>
 </li>
-<li><strong>Venue</strong>: a collection of events for a particular building, attraction, or location.</li>
+<li>
+<p><strong>Venue</strong>: a collection of events for a particular building, attraction, or location.</p>
+</li>
+<li><strong>Vertical</strong>: a collection of categories with similar traits.</li>
 </ul>
                     </div>
 
