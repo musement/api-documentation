@@ -1,81 +1,48 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Musement API documentation</title>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic'
-          rel='stylesheet' type='text/css'>
+        <title></title>
 
-    <link rel="stylesheet" href="http://thack.musement.com/thack_api/css/theme.css" type="text/css"/>
-    <link rel="stylesheet" href="http://thack.musement.com/thack_api/css/theme-fixes.css" type="text/css"/>
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
-</head>
-<body class="wy-body-for-nav">
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/css/highlight.dark.css">
+        <link rel="stylesheet" href="/css/main.css">
+    </head>
+    <body>
 
-    <div class="wy-grid-for-nav">
+        <header class="navbar navbar-default navbar-fixed-top">
 
-        <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-            <div class="wy-side-nav-search">
-                <a href="http://thack.musement.com/thack_api/" class="fa fa-home"> Musement API documentation</a>
-            </div>
+            <a class="navbar-brand" href="/">
+                The title
+                <small class="hidden-xs hidden-sm">
+                    This is the default subtitle!
+                </small>
+            </a>
 
-            <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-                <ul>
-                                            <li class="toctree-l1 ">
-                            <a class="reference internal "
-                               href="http://thack.musement.com/thack_api/authentication.html">
-                                Authentication
-                            </a>
-                        </li>
-                                            <li class="toctree-l1 ">
-                            <a class="reference internal "
-                               href="http://thack.musement.com/thack_api/catalog.html">
-                                Catalog
-                            </a>
-                        </li>
-                                            <li class="toctree-l1 ">
-                            <a class="reference internal "
-                               href="http://thack.musement.com/thack_api/booking.html">
-                                Booking
-                            </a>
-                        </li>
-                                            <li class="toctree-l1 ">
-                            <a class="reference internal "
-                               href="http://thack.musement.com/thack_api/search.html">
-                                Search
-                            </a>
-                        </li>
-                                    </ul>
-            </div>
-            &nbsp;
-        </nav>
+            
+        </header>
 
-        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+        <main class="container">
+            <div class="row">
 
-                        <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-                <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-                <a href="http://thack.musement.com/thack_api/">Musement API documentation</a>
-            </nav>
-
-
-                        <div class="wy-nav-content">
-                <div class="rst-content">
-                    <div role="main" class="document">
-                        <h1 id="musement-api-documentation">Musement API Documentation</h1>
+                
+                <section id="content" class="col-sm-12">
+                    <h1 id="musement-api-documentation">Musement API Documentation</h1>
 <p>Current latest version 3.0.0</p>
 <p>Here you can find documentation to help you start integrating with Musement. Explore our events catalog step by step and easily set up the checkout flow into your app or website.</p>
-<p>The Musement API gives you a set of endpoints to GET all the information about our products such as locations, opening hours, availability, prices, discounts and more. Also your application can create and manage carts, tickets and orders and make payments.</p>
+<p>The Musement API gives you a set of endpoints to get all the information about our <em>Events</em> such as locations, opening hours, availability, prices, discounts and more. Also your application can create and manage carts, tickets and orders and make payments.</p>
 <p>Clicking on the links below you can find all step by step instructions that you need</p>
 <ol>
-<li>[API for Authentication]({{ baseUrl }}/authentication.html)</li>
-<li>[API for Catalog]({{ baseUrl }}/catalog.html)</li>
-<li>[API for Booking]({{ baseUrl }}/booking.html)</li>
-<li>[API for Search]({{ baseUrl }}/search.hmtl)</li>
+<li><a href="http://thack.musement.com/thack_api/authentication.html">Authentication</a></li>
+<li><a href="http://thack.musement.com/thack_api/catalog.html">The catalog</a></li>
+<li><a href="http://thack.musement.com/thack_api/booking.html">Booking</a></li>
+<li><a href="http://thack.musement.com/thack_api/search.html">Search the catalog</a></li>
 </ol>
 <h3 id="swagger-sandbox-tool">Swagger sandbox tool</h3>
-<p><a href="https://api.musement.com/documentation"><a href="https://api.musement.com/documentation">https://api.musement.com/documentation</a></a></p>
+<p><a href="http://thack.musement.com/documentation"><a href="https://api.musement.com/documentation">https://api.musement.com/documentation</a></a></p>
 <h3 id="endpoints">Endpoints</h3>
 <ul>
 <li><em>Production</em>: <a href="https://api.musement.com/api/v3">https://api.musement.com/api/v3</a></li>
@@ -176,31 +143,30 @@ X-Musement-Currency: USD</code></pre>
 <h5><em>Example</em></h5>
 <pre><code>GET /api/v3/events/1/dates/2016-02-10
 X-Musement-Version: 3.0.0</code></pre>
-                    </div>
+                </section>
 
-                    <footer>
-                        <hr/>
-                                                Built with <a href="http://couscous.io/">Couscous</a> using a <a href="https://github.com/CouscousPHP/Template-ReadTheDocs">theme</a> based on <a href="https://readthedocs.org/">Read the Docs</a>.
-                    </footer>
-
-                </div>
             </div>
+        </main>
 
-        </section>
+        <footer>
+            <div class="container">
+                <p class="text-muted">
+                    website generated with <a href="http://couscous.io" title="Markdown website generator">Couscous</a>
+                </p>
+            </div>
+        </footer>
 
-    </div>
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script src="//yastatic.net/highlightjs/8.2/highlight.min.js"></script>
 
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
-    <script src="http://thack.musement.com/thack_api/js/theme.js"></script>
+        <script>
+            $(function() {
+                $("section>h1").wrap('<div class="page-header" />');
+                // Syntax highlighting
+                hljs.initHighlightingOnLoad();
+            });
+        </script>
 
-    <script>
-        $(function() {
-            // Syntax highlighting
-            hljs.initHighlightingOnLoad();
-        });
-    </script>
-
-</body>
+    </body>
 </html>

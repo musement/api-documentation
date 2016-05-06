@@ -1,69 +1,36 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Musement API documentation</title>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic'
-          rel='stylesheet' type='text/css'>
+        <title></title>
 
-    <link rel="stylesheet" href="http://thack.musement.com/thack_api/css/theme.css" type="text/css"/>
-    <link rel="stylesheet" href="http://thack.musement.com/thack_api/css/theme-fixes.css" type="text/css"/>
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
-</head>
-<body class="wy-body-for-nav">
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/css/highlight.dark.css">
+        <link rel="stylesheet" href="/css/main.css">
+    </head>
+    <body>
 
-    <div class="wy-grid-for-nav">
+        <header class="navbar navbar-default navbar-fixed-top">
 
-        <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-            <div class="wy-side-nav-search">
-                <a href="http://thack.musement.com/thack_api/" class="fa fa-home"> Musement API documentation</a>
-            </div>
+            <a class="navbar-brand" href="/">
+                The title
+                <small class="hidden-xs hidden-sm">
+                    This is the default subtitle!
+                </small>
+            </a>
 
-            <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-                <ul>
-                                            <li class="toctree-l1 ">
-                            <a class="reference internal "
-                               href="http://thack.musement.com/thack_api/authentication.html">
-                                Authentication
-                            </a>
-                        </li>
-                                            <li class="toctree-l1 ">
-                            <a class="reference internal "
-                               href="http://thack.musement.com/thack_api/catalog.html">
-                                Catalog
-                            </a>
-                        </li>
-                                            <li class="toctree-l1 ">
-                            <a class="reference internal "
-                               href="http://thack.musement.com/thack_api/booking.html">
-                                Booking
-                            </a>
-                        </li>
-                                            <li class="toctree-l1 ">
-                            <a class="reference internal "
-                               href="http://thack.musement.com/thack_api/search.html">
-                                Search
-                            </a>
-                        </li>
-                                    </ul>
-            </div>
-            &nbsp;
-        </nav>
+            
+        </header>
 
-        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+        <main class="container">
+            <div class="row">
 
-                        <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-                <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-                <a href="http://thack.musement.com/thack_api/">Musement API documentation</a>
-            </nav>
-
-
-                        <div class="wy-nav-content">
-                <div class="rst-content">
-                    <div role="main" class="document">
-                        <h2 id="1-api-for-authentication">1. API for Authentication</h2>
+                
+                <section id="content" class="col-sm-12">
+                    <h2 id="authentication">Authentication</h2>
 <p>Authentication is required for each request. With it we can grant you the right permissions to navigate and operate our data. We follow the oAuth2 standard <a href="https://tools.ietf.org/html/rfc6749">RFC-6749</a> for authentication.</p>
 <p>For a good explanation of OAUTH2 see this page on <a href="https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2">DigitalOcean</a></p>
 <p>At the moment we support <em>Client credentials</em> and <em>Resource Owner Password Credentials</em>. </p>
@@ -71,10 +38,10 @@
 <p>As described in the previou article this grant type is useful if you don't have any customer context. Obtain an <code>Access Token</code> is very easy and you just need to send a request to the endpoint <code>/api/v3/login</code> specifing you <code>client_id</code> and <code>client_secret</code></p>
 <h5><em>Example</em></h5>
 <pre><code>GET /api/v3/login?client_id={client_id}&amp;client_secret={client_secret}&amp;grant_type=client_credentials</code></pre>
-<p>And you'll get an access token not connect to a user.</p>
+<p>And you'll get an access token. <em>Please remember</em> that this access token is not connect to a customer.</p>
 <h3 id="resource-owner-password-credentials">Resource Owner Password Credentials</h3>
-<p>Use this if you want to authenticate a specific customer in a way to allow him to access to his information (like previous orders, profile, preferences, etc)</p>
-<p>The endpoint is again <code>/api/v3/login</code> but this time you need to specify also the <code>username</code> and the <code>password</code> for the user you want to authenticate</p>
+<p>Use this if you want to authenticate a specific customer and access his personal information ( previous orders, profile, preferences, etc)</p>
+<p>The endpoint is again <code>/api/v3/login</code> but this time you need to specify also the <code>username</code> and the <code>password</code> for the user you want to authenticate.</p>
 <h5><em>Example</em></h5>
 <pre><code>GET /api/v3/login?client_id={client_id}&amp;client_secret={client_secret}&amp;grant_type=password&amp;username={username}&amp;password={password}</code></pre>
 <h3 id="authentication-response">Authentication response</h3>
@@ -100,31 +67,30 @@ Authorization: Bearer MWFkZWE5YWUyZTZiNzM3NzFjMzkwZmI3ZDgyM2E2ZWQ0YWFmNDQ1NTM4ZD
 <p>To request a new <code>access_token</code> using the <code>refresh_token</code> just call the login endpoint passing <code>refresh_token</code> as <code>grant_type</code></p>
 <pre><code>GET /api/v3/login?client_id={client_id}&amp;client_secret={client_secret}&amp;refresh_token={refresh_token}&amp;grant_type=refresh_token</code></pre>
 <p>The response contains a new <code>access_token</code> <em>and a new</em> <code>refresh_token</code>. You should use these new values from now on. </p>
-                    </div>
+                </section>
 
-                    <footer>
-                        <hr/>
-                                                Built with <a href="http://couscous.io/">Couscous</a> using a <a href="https://github.com/CouscousPHP/Template-ReadTheDocs">theme</a> based on <a href="https://readthedocs.org/">Read the Docs</a>.
-                    </footer>
-
-                </div>
             </div>
+        </main>
 
-        </section>
+        <footer>
+            <div class="container">
+                <p class="text-muted">
+                    website generated with <a href="http://couscous.io" title="Markdown website generator">Couscous</a>
+                </p>
+            </div>
+        </footer>
 
-    </div>
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script src="//yastatic.net/highlightjs/8.2/highlight.min.js"></script>
 
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
-    <script src="http://thack.musement.com/thack_api/js/theme.js"></script>
+        <script>
+            $(function() {
+                $("section>h1").wrap('<div class="page-header" />');
+                // Syntax highlighting
+                hljs.initHighlightingOnLoad();
+            });
+        </script>
 
-    <script>
-        $(function() {
-            // Syntax highlighting
-            hljs.initHighlightingOnLoad();
-        });
-    </script>
-
-</body>
+    </body>
 </html>

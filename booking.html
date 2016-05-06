@@ -1,96 +1,55 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Musement API documentation</title>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic'
-          rel='stylesheet' type='text/css'>
+        <title></title>
 
-    <link rel="stylesheet" href="http://thack.musement.com/thack_api/css/theme.css" type="text/css"/>
-    <link rel="stylesheet" href="http://thack.musement.com/thack_api/css/theme-fixes.css" type="text/css"/>
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
-</head>
-<body class="wy-body-for-nav">
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/css/highlight.dark.css">
+        <link rel="stylesheet" href="/css/main.css">
+    </head>
+    <body>
 
-    <div class="wy-grid-for-nav">
+        <header class="navbar navbar-default navbar-fixed-top">
 
-        <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-            <div class="wy-side-nav-search">
-                <a href="http://thack.musement.com/thack_api/" class="fa fa-home"> Musement API documentation</a>
-            </div>
+            <a class="navbar-brand" href="/">
+                The title
+                <small class="hidden-xs hidden-sm">
+                    This is the default subtitle!
+                </small>
+            </a>
 
-            <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-                <ul>
-                                            <li class="toctree-l1 ">
-                            <a class="reference internal "
-                               href="http://thack.musement.com/thack_api/authentication.html">
-                                Authentication
-                            </a>
-                        </li>
-                                            <li class="toctree-l1 ">
-                            <a class="reference internal "
-                               href="http://thack.musement.com/thack_api/catalog.html">
-                                Catalog
-                            </a>
-                        </li>
-                                            <li class="toctree-l1 ">
-                            <a class="reference internal "
-                               href="http://thack.musement.com/thack_api/booking.html">
-                                Booking
-                            </a>
-                        </li>
-                                            <li class="toctree-l1 ">
-                            <a class="reference internal "
-                               href="http://thack.musement.com/thack_api/search.html">
-                                Search
-                            </a>
-                        </li>
-                                    </ul>
-            </div>
-            &nbsp;
-        </nav>
+            
+        </header>
 
-        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+        <main class="container">
+            <div class="row">
 
-                        <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-                <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-                <a href="http://thack.musement.com/thack_api/">Musement API documentation</a>
-            </nav>
-
-
-                        <div class="wy-nav-content">
-                <div class="rst-content">
-                    <div role="main" class="document">
-                        <h2 id="3-api-for-booking">3. API for Booking</h2>
+                
+                <section id="content" class="col-sm-12">
+                    <h2 id="booking">Booking</h2>
+<p>The booking process allows you to book an event. Once you have found the <em>Event</em> you want to book, using the search or browsing the catalogues, for a successful booking you have to follow this flow.</p>
+<p>We assume you already retrieved the all the infomation for the <em>Event</em> using the call:</p>
+<pre><code>GET /api/v3/events/{id}</code></pre>
+<h3 id="booking-flow">Booking flow</h3>
 <p><img src="http://musement.s3.amazonaws.com/documentation_images/booking.png" alt="Booking" /></p>
-<p>For a successful booking you have to: </p>
 <ol>
-<li><code>GET /events/{id}</code></li>
-<li><code>GET /events/{id}/dates</code></li>
-<li><code>GET /events/{id}/dates/{YYYY-MM-DD}</code></li>
-<li><code>POST /cart</code></li>
-<li>Create the order</li>
-<li>Finalize the order with or without payment (depending on your contract)</li>
-<li>Retrieve the voucher</li>
+<li>Search for the available dates for the <em>Event</em>. | <a href="https://thack.musement.com/documentation#get--api-v3-events-{id}-dates.{_format}">Test it</a></li>
 </ol>
-<h3 id="31-get-event">3.1 GET Event</h3>
-<p>To navigate the catalog refer to [paragraph 2] (<a href="https://github.com/musement/api-documentation/blob/master/Catalog.md">https://github.com/musement/api-documentation/blob/master/Catalog.md</a>). </p>
-<h3 id="32-get-available-dates-for-a-specific-event">3.2 Get available dates for a specific event</h3>
-<p><strong>DOCs</strong>: [<a href="http://api.musement.com/documentation#get--api-v3-events-{id}-dates.{_format">http://api.musement.com/documentation#get--api-v3-events-{id}-dates.{_format</a>}]
-(<a href="http://api.musement.com/documentation#get--api-v3-events-{id}-dates.{_format">http://api.musement.com/documentation#get--api-v3-events-{id}-dates.{_format</a>})</p>
-<p>Returns a list of all days with availabitiy for a specific event over a period of time.</p>
-<p>To specify the period you can use the parameters <code>from_date</code> and <code>end_date</code>. If none of this data parameters is specified <code>from_date</code> is set to the current day. If <code>end_date</code> is not specified then <code>end_date</code> is set same as <code>from_date</code></p>
+<p>Returns a list of all days with availabitiy for a specific <em>Event</em> over a period of time.</p>
+<h4><em>Request</em></h4>
+<pre><code>GET /api/v3/events/{id}/dates</code></pre>
+<p>To specify the period you can use the parameters <code>from_date</code> and <code>end_date</code>. If none of this parameters are specified <code>from_date</code> is set to the current day. If <code>end_date</code> is not specified then <code>end_date</code> is set same as <code>from_date</code>.</p>
 <p><strong>Examples:</strong></p>
 <p><strong><em> No parameters </em></strong> </p>
 <p><code>from_date</code> and <code>end_date</code> are set as the current day. This call return the current date if there is availabitiy an empty array otherwise.</p>
-<pre><code>GET /api/v3/events/497/dates
-Authorization: Bearer HereTheBearerFromOauth</code></pre>
+<pre><code>GET /api/v3/events/497/dates</code></pre>
 <p><strong><em> With parameters </em></strong> </p>
 <p>Search for available dates for dicember 2016</p>
-<pre><code>GET /api/v3/events/497/dates?from_date=2016-12-01&amp;end_date=2016-12-31
-Authorization: Bearer HereTheBearerFromOauth</code></pre>
+<pre><code>GET /api/v3/events/497/dates?from_date=2016-12-01&amp;end_date=2016-12-31</code></pre>
 <p><strong>Example Response:</strong></p>
 <p>The response is a collection of date</p>
 <pre><code>[
@@ -101,12 +60,15 @@ Authorization: Bearer HereTheBearerFromOauth</code></pre>
     "date": "2016-01-25"
   }
 ]</code></pre>
-<h3 id="33-tickets-available-for-a-specific-event-and-day">3.3 Tickets available for a specific event and day</h3>
-<p>Return a list of all available tickets for a specific day. The response is a collection of items containing : </p>
+<h3 id="3-find-tickets-available-for-selected-day">3 Find tickets available for selected day</h3>
+<p>Once you found the date the next step is search for all available tickets for that day. Please note that for the same event different days can have different type of tickets.</p>
+<h4><em>Request</em></h4>
+<p><code>GET /events/{id}/dates/{YYYY-MM-DD}</code> | [Test it]</p>
+<p>The response is a collection of items containing : </p>
 <ul>
-<li><code>datetime</code> - The date and time. For a single day an event can start more than once.</li>
-<li><code>seats</code> - A collection of all available <code>seats</code>. Here the seat structure</li>
-<li><code>open_ticket</code> - If true the event is an open ticket</li>
+<li><code>datetime</code> - The date and time. For a single day an event can have more starting time.</li>
+<li><code>seats</code> - A collection of all available <code>seats</code> (AKA <code>tickets</code>). Here the seat structure</li>
+<li><code>open_ticket</code> - If true the event is an <code>Open ticket</code></li>
 <li><code>availability</code> - Number of place avaialble</li>
 <li><code>languages</code> - The event can be available in different language. Different time can have different languages</li>
 </ul>
@@ -117,6 +79,7 @@ Authorization: Bearer HereTheBearerFromOauth</code></pre>
 <li><code>max_buy</code> and <code>min_buy</code> - Maximum and minimum number of ticket buyiable in a single transaction</li>
 <li><code>raw_price</code> and <code>retail_price</code> - Internal and public price</li>
 </ul>
+<h4><em>Example</em></h4>
 <p><code>GET /api/v3/events/497/dates/2016-01-15</code></p>
 <p>Response</p>
 <pre><code>[
@@ -151,234 +114,6 @@ Authorization: Bearer HereTheBearerFromOauth</code></pre>
     ]
   }
 ]</code></pre>
-<h3 id="34-cart-apis">3.4 Cart APIs</h3>
-<p>Cart APIs are useful to check the amount of the order, add promotions and discounts and check ticket availability. Every time you add something to it we block the ticket and calculate the final price of the order.</p>
-<h4 id="341-post-carts---create-a-new-cart">3.4.1 POST /carts - Create a new Cart</h4>
-<p>DOCs: <a href="http://api.musement.com/documentation#post--api-v3-carts.{_format">http://api.musement.com/documentation#post--api-v3-carts.{_format</a>}</p>
-<p>Check Documentation for Request Payload. </p>
-<p>NB. The Product id is the SeatPrice id. </p>
-<h4 id="342-get-cartid---retrive-the-cart">3.4.2 GET /cart/{id} - Retrive the cart</h4>
-<h4 id="343-putpatch-cartid---to-update-the-cart">3.4.3 PUT/PATCH /cart/{id} - To Update the cart</h4>
-<p>With this API you can update your cart, adding or removing tickets or populating it with customer info.
-The main difference between PUT and PATCH is that with the first you will update the model of the cart with the body you send, with the PATCH you will update just the field you sent in body. </p>
-<p>For example - in the cart: </p>
-<pre><code>{
-  "id": 1,
-  "tickets": [
-    {
-      "product": {
-        "id": "4488624",
-        "type": "musement",
-        "title": "Torre Eiffel: biglietti salta-la-coda con accesso sommità",
-        "datetime": "2015-08-27T17:30:00+0000",
-        "tourist_category": "Prezzo intero",
-        "activity_name": "Ingresso",
-        "event": {
-          "id": 2700,
-          "title": "Torre Eiffel: biglietti salta-la-coda con accesso sommità"
-        },
-        "image": "https://static1.musement.com/cover/0001/19/skip-the-line-tickets-to-the-eiffel-tower-with-summit-acc..."
-      },
-      "code": "BLU27-08-17-92138",
-      "quantity": 1,
-      "metadata": {},
-      "status": "PENDING",
-      "vouchers": []
-    }
-  ],
-  "retail_price": {
-    "currency": "EUR",
-    "value": 26.6,
-    "formatted_value": "€ 26.60"
-  }
-}</code></pre>
-<p>If you PATCH it with this request:</p>
-<pre><code>PATCH /cart/1
-BODY:
-{
-  "customer" : {
-        "email": "guest136a@fakemail.com",
-        "firstname": "Guest136a",
-        "lastname": "surname136a",
-        "country": {
-          "id": 123
-        }
-  }
-}</code></pre>
-<p>You will get the cart with the customer info <code>GET /cart/1</code>:</p>
-<pre><code>{
-  "id": 1,
-  "tickets": [
-    {
-      "product": {
-        "id": "4488624",
-        "type": "musement",
-        "title": "Torre Eiffel: biglietti salta-la-coda con accesso sommità",
-        "datetime": "2015-08-27T17:30:00+0000",
-        "tourist_category": "Prezzo intero",
-        "activity_name": "Ingresso",
-        "event": {
-          "id": 2700,
-          "title": "Torre Eiffel: biglietti salta-la-coda con accesso sommità"
-        },
-        "image": "https://static1.musement.com/cover/0001/19/skip-the-line-tickets-to-the-eiffel-tower-with-summit-acc..."
-      },
-      "code": "BLU27-08-17-92138",
-      "quantity": 1,
-      "metadata": {},
-      "status": "PENDING",
-      "vouchers": []
-    },
-    {
-        "email": "guest136a@fakemail.com",
-        "firstname": "Guest136a",
-        "lastname": "surname136a",
-        "country": {
-          "id": 123,
-          "name": "Nepal"
-        }
-    }
-  ],
-  "retail_price": {
-    "currency": "EUR",
-    "value": 26.6,
-    "formatted_value": "€ 26.60"
-  }
-}</code></pre>
-<p>Check, all original data is still there plus the new customer info.</p>
-<h4 id="343-delete-cart---delete-the-cart">3.4.3 DELETE Cart - Delete the cart</h4>
-<h4 id="344-customer-info-needed-for-cart">3.4.4 Customer Info needed for cart</h4>
-<p>Docs: <a href="http://api.musement.com/documentation#get--api-v3-carts-{id}-form.{_format">http://api.musement.com/documentation#get--api-v3-carts-{id}-form.{_format</a>}</p>
-<p>With this form you can retrieve all information needed for a successful booking, there are three big categories:</p>
-<ul>
-<li>Customer Data</li>
-<li>Extended Fields</li>
-<li>Passenger Info</li>
-</ul>
-<p>Customer Data and Extended Fields are related to the customer, Passenger info is related to each traveler.</p>
-<p>Example:
-Request: <code>GET /api/v3/carts/{id}/form</code>
-Response:</p>
-<pre><code>{
-  "children": {
-    "firstname": {
-      "type": "text",
-      "required": true,
-      "label": "Name"
-    },
-    "lastname": {
-      "type": "text",
-      "required": true,
-      "label": "Surname"
-    },
-    "email": {
-      "children": {
-        "email": {
-          "type": "email",
-          "required": true,
-          "label": "Email Address"
-        },
-        "email_confirm": {
-          "type": "email",
-          "required": true,
-          "label": "Confirm Email"
-        }
-      },
-      "type": "repeated",
-      "required": true,
-      "label": "Email Address"
-    },
-    "customer_data": {
-      "children": {
-        "do_you_need_invoice": {
-          "type": "checkbox",
-          "required": false,
-          "label": "Do you need an invoice?"
-        },
-        "birthdate": {
-          "type": "date",
-          "required": false,
-          "label": "Date of birth"
-        },
-        "country": {
-          "type": "entity",
-          "required": true,
-          "label": "Country"
-        },
-        "city": {
-          "type": "text",
-          "required": false,
-          "label": "City"
-        },
-        "address": {
-          "type": "text",
-          "required": false,
-          "label": "Address"
-        },
-        "zipcode": {
-          "type": "text",
-          "required": false,
-          "label": "ZIP Code"
-        },
-        "mobile": {
-          "type": "number",
-          "required": false,
-          "label": "Mobile #"
-        },
-        "id_number": {
-          "type": "text",
-          "required": false,
-          "label": "text.profile.id_number"
-        }
-      },
-      "type": "musement_user_customer_data",
-      "required": true,
-      "label": "text.profile.customer_data"
-    },
-    "extended_fields": {
-      "children": {
-        "2700": {
-          "children": {
-            "159": {
-              "children": {
-                "phone_number": {
-                  "type": "text",
-                  "required": true,
-                  "label": "Phone number"
-                }
-              },
-              "type": "form",
-              "required": true,
-              "label": "text.profile.159"
-            }
-          },
-          "type": "form",
-          "required": true,
-          "label": "text.profile.2700"
-        }
-      },
-      "type": "form",
-      "required": true,
-      "label": "text.profile.extended_fields"
-    }
-  }
-}</code></pre>
-<p>Just required fields are needed for a successful booking. With a response like the previous one you have to Update your cart with this body:</p>
-<pre><code>{
-        "firstname": "Guest136a",
-        "lastname": "surname136a",
-        "email": "guest136a@fakemail.com",
-        "customer_data": 
-        {
-                "country": {
-                  "id": 123,
-                  "name": "Nepal"
-                }
-        },
-        "extended_fields": {
-                "phone_number": 123
-        }
-}</code></pre>
 <h3 id="35-create-the-order">3.5 Create the order</h3>
 <p>When the cart is completed (<strong>with customer info filled in</strong>) and you want to finalize it (proceed with payments and check the availability one last time) </p>
 <p><code>POST /api/v3/order</code></p>
@@ -408,31 +143,30 @@ Response <code>{ "nonce": "eyJ2ZXJzaW9uIjoyLCJhdXRob3JpemF0aW9uRmluZ2VycHJpbnQiO
 <p>If you used the login 2.1.2 you can retrieve the voucher with the Request</p>
 <p><code>GET /customer/me/orders</code></p>
 <p>Otherwise we will send it to your email address.</p>
-                    </div>
+                </section>
 
-                    <footer>
-                        <hr/>
-                                                Built with <a href="http://couscous.io/">Couscous</a> using a <a href="https://github.com/CouscousPHP/Template-ReadTheDocs">theme</a> based on <a href="https://readthedocs.org/">Read the Docs</a>.
-                    </footer>
-
-                </div>
             </div>
+        </main>
 
-        </section>
+        <footer>
+            <div class="container">
+                <p class="text-muted">
+                    website generated with <a href="http://couscous.io" title="Markdown website generator">Couscous</a>
+                </p>
+            </div>
+        </footer>
 
-    </div>
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script src="//yastatic.net/highlightjs/8.2/highlight.min.js"></script>
 
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
-    <script src="http://thack.musement.com/thack_api/js/theme.js"></script>
+        <script>
+            $(function() {
+                $("section>h1").wrap('<div class="page-header" />');
+                // Syntax highlighting
+                hljs.initHighlightingOnLoad();
+            });
+        </script>
 
-    <script>
-        $(function() {
-            // Syntax highlighting
-            hljs.initHighlightingOnLoad();
-        });
-    </script>
-
-</body>
+    </body>
 </html>
