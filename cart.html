@@ -71,43 +71,43 @@
                     <div role="main" class="document">
                         <h2 id="cart">Cart</h2>
 <h3 id="create-the-cart">Create the Cart</h3>
-<p><em>NOTE</em></p>
+<p><strong>NOTE</strong></p>
 <ul>
-<li>All calls to carts enpoint return a <em>Cart</em>. See <code>GET /api/v3/carts/{id}</code> for details.</li>
+<li>All calls to carts enpoint return a <em>Cart</em>, see <code>GET /api/v3/carts/{id}</code> for details.</li>
 </ul>
 <p>Create a new <em>Cart</em> is as easy as send a <code>POST</code> to the <code>/api/v3/carts</code> endpoint. The information needed to create a cart are divided in two groups: those related to the <em>Tickets</em> and those related to the <em>Customer</em>.</p>
 <pre><code>POST /api/v3/carts
 
 {
-    "tickets":[
-        {
-            "product": {
-                "id": 8216618
-            },
-            "quantity":2,
-            "metadata":{"language":"es"}
-        }
-    ]
+  "tickets":[
+   {
+     "product": {
+      "id": 8216618
+     },
+     "quantity":2,
+     "metadata":{"language":"es"}
+   }
+  ]
 }</code></pre>
 <p>Of course you can also add more items with a single call</p>
 <pre><code>POST /api/v3/carts
 
 {
-    "tickets":[
-        {
-            "product": {
-                "id": 8216618
-            },
-            "quantity": 2,
-            "metadata":{"language":"es"}
-        },
-        {
-            "product": {
-                "id": 7372773
-            },
-            "quantity": 12
-        }
-    ]
+ "tickets":[
+  {
+    "product": {
+     "id": 8216618
+    },
+    "quantity": 2,
+    "metadata":{"language":"es"}
+  },
+  {
+    "product": {
+      "id": 7372773
+    },
+    "quantity": 12
+  }
+ ]
 }</code></pre>
 <h4 id="add-info-to-a-cart">Add info to a cart</h4>
 <p>Once a cart is create you can add information sending <code>PATCH</code> to the endpoint <code>/api/v3/carts/{id}</code>.</p>
@@ -124,14 +124,14 @@
     }
   }
 }</code></pre>
-<p><em>NOTE</em></p>
+<p><strong>NOTE</strong></p>
 <ul>
 <li><code>email</code>, <code>firstname</code>, <code>lastname</code> and <code>country</code> are all mandatory.</li>
 <li>For the list of available countries <a href="https://thack.musement.com/documentation#get--api-v3-countries.{_format}">see</a></li>
 </ul>
 <h4 id="updatechange-info-in-a-cart">Update/change info in a cart</h4>
 <p>To completely replace the data in the cart you must use <code>PUT</code> verbs and pass the full new payload.</p>
-<pre><code>PUT /api/v3/carts/1
+<pre><code>PUT /api/v3/carts/{id}
 
 {
     "tickets":[
@@ -197,7 +197,6 @@
 <li>Extended Fields - Custom info related to the customer </li>
 <li>Passenger Info - Info <em>for each</em> passanger</li>
 </ul>
-<p>Response:</p>
 <pre><code>{
   "children": {
     "firstname": {
