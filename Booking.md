@@ -135,7 +135,6 @@ POST /api/v3/orders
 
 If the order amount is equal to 0 or you use your payment gateway, use the flow without payment (ask for activation). Otherwise follow the Payment flow in 4.4.2.
 
-
 #### Without Payment Flow
 
 Request ```POST /api/v3/payments/no-payment```
@@ -144,38 +143,38 @@ Request ```POST /api/v3/payments/no-payment```
 
 ##### Braintree Payments
 
-You have to integrate Braintree SDK
+You have to integrate [Braintree SDK](https://developers.braintreepayments.com/)
 
-Note: in QA endpoint use credit card numbers contained in this link https://developers.braintreepayments.com/reference/general/testing/ruby#credit-card-numbers 
+**Note** When testing use credit card numbers contained in this link https://developers.braintreepayments.com/reference/general/testing/ruby#credit-card-numbers 
 
-###### Step 1 
-GET the token
+###### Step 1
 
-Request ```POST /api/v3/payments/braintree/token```
-Response ```{ "nonce": "eyJ2ZXJzaW9uIjoyLCJhdXRob3JpemF0aW9uRmluZ2VycHJpbnQiOiI3MDVjY2JlZThmZDRkNzI3MW" }```
+Get the nonce
 
-###### Step 2 
+```
+POST /api/v3/payments/braintree/token
+```
 
-Using Braintree SDK, ask the user for payment information (credit card, paypal etc). For more details please visit: https://developers.braintreepayments.com/
-
-###### Step 3 
-
-After the user fills out the braintree payment form, ask us to process the payment and close the order 
-
-Request ```POST /api/v3/payments/braintree/payment```
-
-Request Body 
+Response 
 ```
 {
-  "nonce" : "nonce_text",
-  "orderId" : 123456
+  "nonce": "eyJ2ZXJzaW9uIjoyLCJhdXRob3JpemF0aW9uRmluZ2VycHJpbnQiOiI3MDVjY2JlZThmZDRkNzI3MW" 
 }
 ```
 
-### 3.7 Retrieve the voucher
+###### Step 2 
 
-If you used the login 2.1.2 you can retrieve the voucher with the Request
+Using Braintree SDK, ask the user for payment information (credit card, paypal etc). Look at the [Braintree documentation](https://developers.braintreepayments.com/) for more details.
 
-```GET /customer/me/orders```
+###### Step 3 
 
-Otherwise we will send it to your email address.
+After the user fills out the Braintree payment form, ask us to process the payment and close the order by sending a 
+
+```
+POST /api/v3/payments/braintree/payment
+
+{
+  "nonce" : "nonce_string",
+  "orderId" : 123456
+}
+```
