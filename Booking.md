@@ -119,23 +119,27 @@ Response
 ]
 ```
 
-### 3.5 Create the order
+### Create the order
 
 When the cart is completed (**with customer info filled in**) and you want to finalize it (proceed with payments and check the availability one last time) 
 
-```POST /api/v3/order```
+```POST /api/v3/orders
 
-### 3.6 Finalize the order
+{
+    "cart_id": 123456
+}
+```
 
+### Finalize the order
 
 If the order amount is equal to 0 or you use your payment gateway, use the flow without payment (ask for activation). Otherwise follow the Payment flow in 4.4.2.
 
 
-#### 3.6.1 Without Payment Flow
+#### Without Payment Flow
 
 Request ```POST /api/v3/payments/no-payment```
 
-#### 3.6.2 With Payment Flow
+#### With Payment Flow
 
 ##### Braintree Payments
 
