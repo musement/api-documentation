@@ -123,7 +123,8 @@ Response
 
 When the cart is completed (**with customer info filled in**) and you want to finalize it (proceed with payments and check the availability one last time) 
 
-```POST /api/v3/orders
+```
+POST /api/v3/orders
 
 {
     "cart_id": 123456
