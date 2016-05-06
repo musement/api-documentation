@@ -172,18 +172,17 @@
 {
     "cart_id": 123456
 }</code></pre>
-<h3 id="finalize-the-order">Finalize the order</h3>
-<p>If the order amount is equal to 0 or you use your payment gateway, use the flow without payment (ask for activation). Otherwise follow the Payment flow in 4.4.2.</p>
+<p>You'll get the order id as response. Once you have the order id you can pay your order. If the order amount is equal to 0 or you use your payment gateway, use the flow without payment (ask for activation). Otherwise follow the <em>Braintree Payments flow</em></p>
 <h4 id="without-payment-flow">Without Payment Flow</h4>
 <pre><code>POST /api/v3/payments/no-payment
 
 {
     "orderId": 123456
 }</code></pre>
-<h4 id="with-payment-flow">With Payment Flow</h4>
-<h5 id="braintree-payments">Braintree Payments</h5>
+<h5 id="braintree-payments-flow">Braintree Payments flow</h5>
 <p>You have to integrate <a href="https://developers.braintreepayments.com/">Braintree SDK</a></p>
-<p><strong>Note</strong> When testing use credit card numbers contained in this link <a href="https://developers.braintreepayments.com/reference/general/testing/ruby#credit-card-numbers">https://developers.braintreepayments.com/reference/general/testing/ruby#credit-card-numbers</a> </p>
+<p><strong>Note</strong>
+When testing use credit card numbers contained in this link <a href="https://developers.braintreepayments.com/reference/general/testing/ruby#credit-card-numbers">https://developers.braintreepayments.com/reference/general/testing/ruby#credit-card-numbers</a> </p>
 <h6 id="step-1">Step 1</h6>
 <p>Get the nonce</p>
 <pre><code>POST /api/v3/payments/braintree/token</code></pre>
