@@ -16,7 +16,7 @@ As described in the previou article this grant type is useful if you don't have 
 GET /api/v3/login?client_id={client_id}&client_secret={client_secret}&grant_type=client_credentials
 ```
 
-And you'll get an access token. *Please remember* that this access token is not connect to a customer.
+And you'll get an access token. *Please remember* that this access token is not connected to a customer.
 
 ### Resource Owner Password Credentials
 
@@ -32,7 +32,7 @@ GET /api/v3/login?client_id={client_id}&client_secret={client_secret}&grant_type
 
 ### Authentication response  
 
-All the authentication requests, despite the grant type, has the same response. The information you need to save are `access_token` and `refresh_token`. The value of `access_token` is the value you have to pass in the `Authentication` header in all your request.
+All the authentication requests, despite the grant type, have the same response. The information you need to save are `access_token` and `refresh_token`. The value of `access_token` is the value you have to pass in the `Authentication` header in all your request.
 
 ##### _Example_
 
