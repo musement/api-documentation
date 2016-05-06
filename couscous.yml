@@ -5,6 +5,10 @@ title: Musement API Doc
 
 baseUrl: http://thack.musement.com/thack_api/
 
+scripts:
+    before:
+        - git pull origin master
+
 menu:
     items:
         authentication:
