@@ -17,10 +17,11 @@ Clicking on the links below you can find all step by step instructions that you 
 
 [https://api.musement.com/documentation](http://thack.musement.com/documentation)
 
-### Endpoints
+### Endpoint and credentials
 
-* *Production*: https://api.musement.com/api/v3
-* *QA-testing*: https://api-qa.musement.com/api/v3
+* *Endpoint*: thack.musement.com
+* *client_id*: 13_3ztmspqziz28kw4k0cskws8ookow480c48gwo0skg8kwk448sc
+* *client_secret*: 4cr08eacreiowswskkk00wgwsg00s84ok4so44goskosww40g8
 
 ## Generic info
 
