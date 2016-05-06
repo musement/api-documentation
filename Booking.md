@@ -21,13 +21,13 @@ Returns a list of all days with availabitiy for a specific _Event_ over a period
 GET /api/v3/events/{id}/dates
 ```
 
-To specify the period you can use the parameters `from_date` and `end_date`. If none of this parameters are specified `from_date` is set to the current day. If `end_date` is not specified then `end_date` is set same as `from_date`.
+To specify the period you can use the parameters `from_date` and `end_date`. If none of these parameters are specified `from_date` is set to the current day. If `end_date` is not specified then `end_date` is set to the same as `from_date`.
 
 **Examples:**
 
 *** No parameters *** 
 
-`from_date` and `end_date` are set as the current day. This call return the current date if there is availabitiy an empty array otherwise.
+`from_date` and `end_date` are set as the current day. This call returns the current date if there is availabitiy, an empty array otherwise.
 
 ```
 GET /api/v3/events/497/dates
@@ -35,7 +35,7 @@ GET /api/v3/events/497/dates
 
 *** With parameters *** 
 
-Search for available dates for dicember 2016
+Search for available dates for December 2016
 
 ```
 GET /api/v3/events/497/dates?from_date=2016-12-01&end_date=2016-12-31
@@ -43,7 +43,7 @@ GET /api/v3/events/497/dates?from_date=2016-12-01&end_date=2016-12-31
 
 **Example Response:**
 
-The response is a collection of date
+The response is a collection of dates
 
 ```
 [
@@ -58,24 +58,24 @@ The response is a collection of date
 
 ### 3 Find tickets available for selected day
 
-Once you found the date the next step is search for all available tickets for that day. Please note that for the same event different days can have different type of tickets.
+Once you have found the date, the next step is to search for all available tickets for that day. Please note that for the same event different days can have different types of tickets.
 
 #### _Request_
 ```GET /events/{id}/dates/{YYYY-MM-DD}``` | [Test it]
 
 The response is a collection of items containing : 
 
- - `datetime` - The date and time. For a single day an event can have more starting time.
- - `seats` - A collection of all available `seats` (AKA `tickets`). Here the seat structure
+ - `datetime` - The date and time. For a single day an event may have multiple starting times.
+ - `seats` - A collection of all available `seats` (AKA `tickets`). Here you can find the seat structure.
  - `open_ticket` - If true the event is an `Open ticket`
  - `availability` - Number of place available
- - `languages` - The event can be available in different language. Different time can have different languages
+ - `languages` - The event may be available in different languages. Different times may also have different languages
 
 `seat` structure:
 
  - `id` - Unique seat identifier
- - `price_tag` - Give info about the person the ticket is for. Ticket type (`name`) and type of person (`group`) the `seat` is for. Please note that for the same date and time the combination of `name` and `group`  is unique but you can have more seat with the same `group` or `name`
- - `max_buy` and `min_buy` - Maximum and minimum number of ticket buyiable in a single transaction
+ - `price_tag` - Info about the `seat` (person) the ticket is for: ticket type (`name`) and type of person (`group`). Please note that for the same date and time the combination of `name` and `group`  is unique but you can have multiple seats with the same `group` or `name`
+ - `max_buy` and `min_buy` - Maximum and minimum number of ticket purchasable in a single transaction
  - `raw_price` and `retail_price` - Internal and public price
 
 #### _Example_
