@@ -75,21 +75,28 @@
                         <div class="wy-nav-content">
                 <div class="rst-content">
                     <div role="main" class="document">
-                        <h2 id="catalog">Catalog</h2>
-<p>The key part of the Musement catalogue is events. Events are organized by type using <em>Categories</em> and <em>Verticals</em> and by geographical location using <em>Cities</em> and <em>Venues</em>.</p>
-<p>To find events in the catalogue you can use the <em>Search</em> or you can navigate to it by using some predefined collection.</p>
-<p><img src="http://musement.s3.amazonaws.com/documentation_images/catalog.png" alt="Catalog" /></p>
-<h3 id="event-endpoints">Event endpoints</h3>
-<p>All these endpoints return events. All these endpoints support different parameters that allow you to further filter the events.</p>
+                        <h1 id="musement-glossary">Musement Glossary</h1>
 <ul>
-<li><code>GET /api/v3/verticals/{id}/events</code> | All the events for a specific <em>Vertical</em>  | <a href="http://thack.musement.com/documentation#get--api-v3-verticals-{id}-events.{_format}">Test it</a></li>
-<li><code>GET /api/v3/categories/{id}/events</code> | All the events for a specific <em>Category</em> | <a href="http://thack.musement.com/documentation#get--api-v3-categories-{id}-events.{_format}">Test it</a></li>
-<li><code>GET /api/v3/venues/{id}/events</code> | All the events for a specific <em>Venue</em> | <a href="http://thack.musement.com/documentation#get--api-v3-venues-{id}-events.{_format}">Test it</a></li>
-<li><code>GET /api/v3/cities/{id}/events</code> | All the events for a specific <em>City</em> | <a href="http://thack.musement.com/documentation#get--api-v3-cities-{id}-events.{_format}">Test it</a></li>
-<li><code>GET /api/v3/cities/{id}/events/{today|tomorrow}</code> | Return all events available in a specific city <code>today</code> or <code>tomorrow</code> | <a href="http://thack.musement.com/documentation#get--api-v3-cities-{id}-events-{happening}.{_format}">Test it</a></li>
-<li><code>GET /api/v3/countries/{id}/events</code> | All the events for a specific <em>Country</em> | <a href="http://thack.musement.com/documentation#get--api-v3-countries-{id}-events.{_format}">Test it</a></li>
+<li>
+<p><strong>Category</strong>: a collection of events with shared themes or characteristics.</p>
+</li>
+<li>
+<p><strong>Customer</strong>: the person who makes the purchase. He may or may not be one of the passengers. In any cart there must be one and only one customer.</p>
+</li>
+<li>
+<p><strong>Event</strong>: a tour, ticket, or general product to purchase.</p>
+</li>
+<li>
+<p><strong>Open ticket</strong>: the event does not have an exact starting time. Musement events can have a specific date/time, e.g. a football match, or can be valid for a limited time span, e.g. an entrance ticket valid for the next 365 days. In the first case the property open_ticket would be &quot;no&quot;, in the second case would be &quot;yes&quot;. The API dates for open tickets will always return the last day of availability no matter the range of days you passed. This property is printed at the end of each &quot;Single date&quot; API request.</p>
+</li>
+<li>
+<p><strong>Passenger</strong>: the person who will use the ticket. In any cart there can be multiple passengers or none. Not every product requires info about passengers.</p>
+</li>
+<li>
+<p><strong>Seat price</strong>: this is a single product that can be added to the cart. The seat price identifies a specific time slot, with a specific ticket holder for a specific event.</p>
+</li>
+<li><strong>Venue</strong>: a collection of events for a particular building, attraction, or location.</li>
 </ul>
-<p>Full list: <a href="http://api.musement.com/documentation">http://api.musement.com/documentation</a></p>
                     </div>
 
                     <footer>

@@ -76,7 +76,7 @@
                 <div class="rst-content">
                     <div role="main" class="document">
                         <h2 id="4-api-for-search">4. API for Search</h2>
-<p>If you want to search some place or an event this is the endpoint to be used:</p>
+<p>If you want to search for a specific place or event, use this endpoint:</p>
 <p><code>GET /api/v3/events/search-extended</code></p>
 <p>You can pass your query string of keywords with the parameter <code>"q"</code></p>
 <p><code>GET /api/v3/events/search-extended?q=sagrada+familia</code></p>
@@ -85,13 +85,13 @@
 <h3 id="41-filters">4.1 Filters</h3>
 <p>You can also filter the results using this list of parameters:</p>
 <p><code>language</code> : events that are translated in one of the langauges passed as a comma separated array</p>
-<p><code>vertical</code> : events that are associated to one of the specified verticals</p>
-<p><code>category</code> : events that are associated to one of the specifiedcategories</p>
+<p><code>vertical</code> : events that are associated with one of the specified verticals</p>
+<p><code>category</code> : events that are associated with one of the specified categories</p>
 <p><code>topFeature</code> : events that have one of these properties: &quot;Top seller&quot;, &quot;Must see&quot; or &quot;Best seller&quot;</p>
-<p><code>country</code> : events that are associated to one of the specified countries</p>
-<p><code>city</code> : events that are associated to one of the specified cities</p>
-<p><code>minPrice</code> : events that have a default price over the numeric value passed</p>
-<p><code>maxPrice</code> : events that have a default price below the numeric value passed</p>
+<p><code>country</code> : events that are associated with one of the specified countries</p>
+<p><code>city</code> : events that are associated with one of the specified cities</p>
+<p><code>minPrice</code> : events that have a default price higher than the numeric value passed</p>
+<p><code>maxPrice</code> : events that have a default price lower than the numeric value passed</p>
                     </div>
 
                     <footer>

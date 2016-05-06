@@ -79,9 +79,9 @@
 <h3 id="create-the-cart">Create the Cart</h3>
 <p><strong>NOTE</strong></p>
 <ul>
-<li>All calls to carts enpoint return a <em>Cart</em>, see <code>GET /api/v3/carts/{id}</code> for details.</li>
+<li>All calls to carts endpoints return a <em>Cart</em>, see <code>GET /api/v3/carts/{id}</code> for details.</li>
 </ul>
-<p>Create a new <em>Cart</em> is as easy as send a <code>POST</code> to the <code>/api/v3/carts</code> endpoint. The information needed to create a cart are divided in two groups: those related to the <em>Tickets</em> and those related to the <em>Customer</em>.</p>
+<p>Creating a new <em>Cart</em> is as easy as sending a <code>POST</code> to the <code>/api/v3/carts</code> endpoint. The information needed to create a cart is divided in two groups: those related to the <em>Tickets</em> and those related to the <em>Customer</em>.</p>
 <pre><code>POST /api/v3/carts
 
 {
@@ -116,7 +116,7 @@
  ]
 }</code></pre>
 <h4 id="add-info-to-a-cart">Add info to a cart</h4>
-<p>Once a cart is create you can add information sending <code>PATCH</code> to the endpoint <code>/api/v3/carts/{id}</code>.</p>
+<p>Once a cart is created you can add information sending <code>PATCH</code> to the endpoint <code>/api/v3/carts/{id}</code>.</p>
 <p><em>A call that add customer data to an existing cart</em></p>
 <pre><code>PATCH /api/v3/carts/{id}
 
@@ -159,7 +159,7 @@
   }
 }</code></pre>
 <blockquote>
-<p>The main difference between PUT and PATCH is that with the first you will update the model of the cart with the body you send, with the PATCH you will update just the field you sent in body. </p>
+<p>The main difference between PUT and PATCH is that with the first you will update the model of the cart with the body you send, with the PATCH you will update just the field you send in body. </p>
 </blockquote>
 <h4 id="retrive-the-cart">Retrive the cart</h4>
 <h4><em>Request</em></h4>
@@ -195,11 +195,11 @@
   }
 }</code></pre>
 <h4 id="extra-info-needed-for-cart">Extra info needed for cart</h4>
-<p>Once the you cart has items and customer information, depending on the items you have in the cart, some extra info might be needed to complete the purchase.</p>
-<p>To retrieve these info you need to call <code>GET /api/v3/carts/{id}/form</code> </p>
+<p>Once the cart has items and customer information, depending on the items you have in the cart, some extra info might be needed to complete the purchase.</p>
+<p>To retrieve this info you need to call <code>GET /api/v3/carts/{id}/form</code> </p>
 <p>With this form you can retrieve all information needed for a successful booking, there are three big categories:</p>
 <ul>
-<li>Customer Data - Standard infor related to the customer</li>
+<li>Customer Data - Standard info related to the customer</li>
 <li>Extended Fields - Custom info related to the customer </li>
 <li>Passenger Info - Info <em>for each</em> passanger</li>
 </ul>
@@ -307,7 +307,7 @@
     }
   }
 }</code></pre>
-<p>Just required fields are needed for a successful booking. With a response like the previous one you have to update your cart with this body:</p>
+<p>Just required fields are needed for a successful booking. With a response like the previous one, you have to update your cart with this body:</p>
 <pre><code>{
   "firstname": "Guest136a",
   "lastname": "surname136a",

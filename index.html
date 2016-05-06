@@ -175,7 +175,7 @@ X-Musement-Currency: SEK</code></pre>
     "value": 380,
     "formatted_value": "SEK 380.00"
   }</code></pre>
-<p>and is US dollars</p>
+<p>and in US dollars</p>
 <pre><code>GET /api/v3/events/1/dates/2016-02-10
 X-Musement-Currency: USD</code></pre>
 <pre><code>...
@@ -185,9 +185,9 @@ X-Musement-Currency: USD</code></pre>
     "formatted_value": "$ 37.00"
   }</code></pre>
 <h3 id="api-versioning">API Versioning</h3>
-<p>The corrent latest verision is: <code>3.0.0</code></p>
-<p>When you start a new project that uses <em>Musement API</em> set <code>X-Musement-Version</code> to the current latest version. This assure that the model in the response will be stable with time. If you don't set the header the server will alwayas returns the latest version. </p>
-<p>When a new version is released you can check the documentation and choose to upgrade your header or remain with your version. You can also specify different version for different calls. But we discourage this practice.</p>
+<p>The current latest version is: <code>3.0.0</code></p>
+<p>When you start a new project that uses <em>Musement API</em> set <code>X-Musement-Version</code> to the current latest version. This assures that the model in the response will be stable with time. If you don't set the header the server will always return the latest version. </p>
+<p>When a new version is released you can check the documentation and choose to upgrade your header or remain with your version. You can also specify different versions for different calls, but we discourage this practice.</p>
 <h5><em>Example</em></h5>
 <pre><code>GET /api/v3/events/1/dates/2016-02-10
 X-Musement-Version: 3.0.0</code></pre>

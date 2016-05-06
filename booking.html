@@ -87,16 +87,16 @@
 <p>Returns a list of all days with availabitiy for a specific <em>Event</em> over a period of time.</p>
 <h4><em>Request</em></h4>
 <pre><code>GET /api/v3/events/{id}/dates</code></pre>
-<p>To specify the period you can use the parameters <code>from_date</code> and <code>end_date</code>. If none of this parameters are specified <code>from_date</code> is set to the current day. If <code>end_date</code> is not specified then <code>end_date</code> is set same as <code>from_date</code>.</p>
+<p>To specify the period you can use the parameters <code>from_date</code> and <code>end_date</code>. If none of these parameters are specified <code>from_date</code> is set to the current day. If <code>end_date</code> is not specified then <code>end_date</code> is set to the same as <code>from_date</code>.</p>
 <p><strong>Examples:</strong></p>
 <p><strong><em> No parameters </em></strong> </p>
-<p><code>from_date</code> and <code>end_date</code> are set as the current day. This call return the current date if there is availabitiy an empty array otherwise.</p>
+<p><code>from_date</code> and <code>end_date</code> are set as the current day. This call returns the current date if there is availabitiy, an empty array otherwise.</p>
 <pre><code>GET /api/v3/events/497/dates</code></pre>
 <p><strong><em> With parameters </em></strong> </p>
-<p>Search for available dates for dicember 2016</p>
+<p>Search for available dates for December 2016</p>
 <pre><code>GET /api/v3/events/497/dates?from_date=2016-12-01&amp;end_date=2016-12-31</code></pre>
 <p><strong>Example Response:</strong></p>
-<p>The response is a collection of date</p>
+<p>The response is a collection of dates</p>
 <pre><code>[
   {
     "date": "2016-01-14"
@@ -106,22 +106,22 @@
   }
 ]</code></pre>
 <h3 id="3-find-tickets-available-for-selected-day">3 Find tickets available for selected day</h3>
-<p>Once you found the date the next step is search for all available tickets for that day. Please note that for the same event different days can have different type of tickets.</p>
+<p>Once you have found the date, the next step is to search for all available tickets for that day. Please note that for the same event different days can have different types of tickets.</p>
 <h4><em>Request</em></h4>
 <p><code>GET /events/{id}/dates/{YYYY-MM-DD}</code> | [Test it]</p>
 <p>The response is a collection of items containing : </p>
 <ul>
-<li><code>datetime</code> - The date and time. For a single day an event can have more starting time.</li>
-<li><code>seats</code> - A collection of all available <code>seats</code> (AKA <code>tickets</code>). Here the seat structure</li>
+<li><code>datetime</code> - The date and time. For a single day an event may have multiple starting times.</li>
+<li><code>seats</code> - A collection of all available <code>seats</code> (AKA <code>tickets</code>). Here you can find the seat structure.</li>
 <li><code>open_ticket</code> - If true the event is an <code>Open ticket</code></li>
-<li><code>availability</code> - Number of place avaialble</li>
-<li><code>languages</code> - The event can be available in different language. Different time can have different languages</li>
+<li><code>availability</code> - Number of place available</li>
+<li><code>languages</code> - The event may be available in different languages. Different times may also have different languages</li>
 </ul>
 <p><code>seat</code> structure:</p>
 <ul>
 <li><code>id</code> - Unique seat identifier</li>
-<li><code>price_tag</code> - Give info about the person the ticket is for. Ticket type (<code>name</code>) and type of person (<code>group</code>) the <code>seat</code> is for. Please note that for the same date and time the combination of <code>name</code> and <code>group</code>  is unique but you can have more seat with the same <code>group</code> or <code>name</code></li>
-<li><code>max_buy</code> and <code>min_buy</code> - Maximum and minimum number of ticket buyiable in a single transaction</li>
+<li><code>price_tag</code> - Info about the <code>seat</code> (person) the ticket is for: ticket type (<code>name</code>) and type of person (<code>group</code>). Please note that for the same date and time the combination of <code>name</code> and <code>group</code>  is unique but you can have multiple seats with the same <code>group</code> or <code>name</code></li>
+<li><code>max_buy</code> and <code>min_buy</code> - Maximum and minimum number of ticket purchasable in a single transaction</li>
 <li><code>raw_price</code> and <code>retail_price</code> - Internal and public price</li>
 </ul>
 <h4><em>Example</em></h4>
@@ -169,7 +169,11 @@
 <h3 id="finalize-the-order">Finalize the order</h3>
 <p>If the order amount is equal to 0 or you use your payment gateway, use the flow without payment (ask for activation). Otherwise follow the Payment flow in 4.4.2.</p>
 <h4 id="without-payment-flow">Without Payment Flow</h4>
-<p>Request <code>POST /api/v3/payments/no-payment</code></p>
+<pre><code>POST /api/v3/payments/no-payment
+
+{
+    "orderId": 123456
+}</code></pre>
 <h4 id="with-payment-flow">With Payment Flow</h4>
 <h5 id="braintree-payments">Braintree Payments</h5>
 <p>You have to integrate <a href="https://developers.braintreepayments.com/">Braintree SDK</a></p>
