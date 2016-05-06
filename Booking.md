@@ -137,7 +137,13 @@ If the order amount is equal to 0 or you use your payment gateway, use the flow 
 
 #### Without Payment Flow
 
-Request ```POST /api/v3/payments/no-payment```
+```
+POST /api/v3/payments/no-payment
+
+{
+    "orderId": 123456
+}
+```
 
 #### With Payment Flow
 
