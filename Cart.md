@@ -2,8 +2,8 @@
 
 ### Create the Cart
 
-*NOTE*
- - All calls to carts enpoint return a _Cart_. See `GET /api/v3/carts/{id}` for details.
+**NOTE**
+- All calls to carts enpoint return a _Cart_, see `GET /api/v3/carts/{id}` for details.
 
 Create a new _Cart_ is as easy as send a `POST` to the `/api/v3/carts` endpoint. The information needed to create a cart are divided in two groups: those related to the _Tickets_ and those related to the _Customer_.
 
@@ -11,15 +11,15 @@ Create a new _Cart_ is as easy as send a `POST` to the `/api/v3/carts` endpoint.
 POST /api/v3/carts
 
 {
-    "tickets":[
-        {
-            "product": {
-                "id": 8216618
-            },
-            "quantity":2,
-            "metadata":{"language":"es"}
-        }
-    ]
+  "tickets":[
+   {
+     "product": {
+      "id": 8216618
+     },
+     "quantity":2,
+     "metadata":{"language":"es"}
+   }
+  ]
 }
 ```
 
@@ -29,28 +29,27 @@ Of course you can also add more items with a single call
 POST /api/v3/carts
 
 {
-    "tickets":[
-        {
-            "product": {
-                "id": 8216618
-            },
-            "quantity": 2,
-            "metadata":{"language":"es"}
-        },
-        {
-            "product": {
-                "id": 7372773
-            },
-            "quantity": 12
-        }
-    ]
+ "tickets":[
+  {
+    "product": {
+     "id": 8216618
+    },
+    "quantity": 2,
+    "metadata":{"language":"es"}
+  },
+  {
+    "product": {
+      "id": 7372773
+    },
+    "quantity": 12
+  }
+ ]
 }
 ```
 
 #### Add info to a cart
 
 Once a cart is create you can add information sending `PATCH` to the endpoint `/api/v3/carts/{id}`.
-
 
 _A call that add customer data to an existing cart_
 ```
@@ -68,16 +67,16 @@ PATCH /api/v3/carts/{id}
 }
 ```
 
-*NOTE*
- - `email`, `firstname`, `lastname` and `country` are all mandatory.
- - For the list of available countries [see](https://thack.musement.com/documentation#get--api-v3-countries.{_format})
+**NOTE**
+- `email`, `firstname`, `lastname` and `country` are all mandatory.
+- For the list of available countries [see](https://thack.musement.com/documentation#get--api-v3-countries.{_format})
 
 #### Update/change info in a cart
 
 To completely replace the data in the cart you must use `PUT` verbs and pass the full new payload.
 
 ```
-PUT /api/v3/carts/1
+PUT /api/v3/carts/{id}
 
 {
     "tickets":[
@@ -148,11 +147,9 @@ To retrieve these info you need to call ```GET /api/v3/carts/{id}/form```
 
 With this form you can retrieve all information needed for a successful booking, there are three big categories:
 
-* Customer Data - Standard infor related to the customer
-* Extended Fields - Custom info related to the customer 
-* Passenger Info - Info *for each* passanger
-
-Response:
+- Customer Data - Standard infor related to the customer
+- Extended Fields - Custom info related to the customer 
+- Passenger Info - Info *for each* passanger
 
 ```
 {
