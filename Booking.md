@@ -68,7 +68,7 @@ The response is a collection of items containing :
  - `datetime` - The date and time. For a single day an event can have more starting time.
  - `seats` - A collection of all available `seats` (AKA `tickets`). Here the seat structure
  - `open_ticket` - If true the event is an `Open ticket`
- - `availability` - Number of place avaialble
+ - `availability` - Number of place available
  - `languages` - The event can be available in different language. Different time can have different languages
 
 `seat` structure:
