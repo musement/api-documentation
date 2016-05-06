@@ -6,10 +6,12 @@
 
 * **Event**: a tour, ticket, or general product to purchase.
 
-* **Open ticket**: the event does not have an exact starting time. Musement events can have a specific date/time, e.g. a football match, or can be valid for a limited time span, e.g. an entrance ticket valid for the next 365 days. In the first case the property open_ticket would be "no", in the second case would be "yes". The API dates for open tickets will always return the last day of availability no matter the range of days you passed. This property is printed at the end of each "Single date" API request.
+* **Open ticket**: the event does not have an exact starting time. Musement events can have a specific date/time, e.g. a football match, or can be valid for a limited time span, e.g. an entrance ticket valid for the next 365 days. There are two types of open tickets: tickets valid until a specifc date and tickets valid for a specific amount of time after purchase. The API dates for open tickets will always return the last day of availability no matter the range of days you passed. This property is printed at the end of each "Single date" API request.
 
 * **Passenger**: the person who will use the ticket. In any cart there can be multiple passengers or none. Not every product requires info about passengers.
 
 * **Seat price**: this is a single product that can be added to the cart. The seat price identifies a specific time slot, with a specific ticket holder for a specific event.
 
 * **Venue**: a collection of events for a particular building, attraction, or location.
+
+* **Vertical**: a collection of categories with similar traits.
