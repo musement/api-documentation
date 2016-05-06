@@ -3,9 +3,9 @@
 ### Create the Cart
 
 **NOTE**
-- All calls to carts enpoint return a _Cart_, see `GET /api/v3/carts/{id}` for details.
+- All calls to carts endpoints return a _Cart_, see `GET /api/v3/carts/{id}` for details.
 
-Create a new _Cart_ is as easy as send a `POST` to the `/api/v3/carts` endpoint. The information needed to create a cart are divided in two groups: those related to the _Tickets_ and those related to the _Customer_.
+Creating a new _Cart_ is as easy as sending a `POST` to the `/api/v3/carts` endpoint. The information needed to create a cart is divided in two groups: those related to the _Tickets_ and those related to the _Customer_.
 
 ```
 POST /api/v3/carts
@@ -49,7 +49,7 @@ POST /api/v3/carts
 
 #### Add info to a cart
 
-Once a cart is create you can add information sending `PATCH` to the endpoint `/api/v3/carts/{id}`.
+Once a cart is created you can add information sending `PATCH` to the endpoint `/api/v3/carts/{id}`.
 
 _A call that add customer data to an existing cart_
 ```
@@ -99,7 +99,7 @@ PUT /api/v3/carts/{id}
 }
 ```
 
-> The main difference between PUT and PATCH is that with the first you will update the model of the cart with the body you send, with the PATCH you will update just the field you sent in body. 
+> The main difference between PUT and PATCH is that with the first you will update the model of the cart with the body you send, with the PATCH you will update just the field you send in body. 
 
 #### Retrive the cart
 
@@ -141,13 +141,13 @@ PUT /api/v3/carts/{id}
 
 #### Extra info needed for cart
 
-Once the you cart has items and customer information, depending on the items you have in the cart, some extra info might be needed to complete the purchase.
+Once the cart has items and customer information, depending on the items you have in the cart, some extra info might be needed to complete the purchase.
 
-To retrieve these info you need to call ```GET /api/v3/carts/{id}/form``` 
+To retrieve this info you need to call ```GET /api/v3/carts/{id}/form``` 
 
 With this form you can retrieve all information needed for a successful booking, there are three big categories:
 
-- Customer Data - Standard infor related to the customer
+- Customer Data - Standard info related to the customer
 - Extended Fields - Custom info related to the customer 
 - Passenger Info - Info *for each* passanger
 
@@ -258,7 +258,7 @@ With this form you can retrieve all information needed for a successful booking,
 }
 ```
 
-Just required fields are needed for a successful booking. With a response like the previous one you have to update your cart with this body:
+Just required fields are needed for a successful booking. With a response like the previous one, you have to update your cart with this body:
 
 ```
 {
