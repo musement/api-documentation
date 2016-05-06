@@ -1,0 +1,27 @@
+template:
+    url: https://github.com/CouscousPHP/Template-ReadTheDocs
+
+title: Musement API Doc
+
+baseUrl: http://thack.musement.com/thack_api/
+
+menu:
+    items:
+        authentication:
+            text: Authentication
+            relativeUrl: authentication.html
+        catalog:
+            text: Catalog
+            relativeUrl: catalog.html
+        booking:
+            text: Booking
+            relativeUrl: booking.html
+        cart:
+            text: Cart
+            relativeUrl: cart.html
+        customer:
+            text: Customer
+            relativeUrl: customer.html
+        search:
+            text: Search
+            relativeUrl: search.html
