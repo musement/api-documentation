@@ -131,9 +131,7 @@ POST /api/v3/orders
 }
 ```
 
-### Finalize the order
-
-If the order amount is equal to 0 or you use your payment gateway, use the flow without payment (ask for activation). Otherwise follow the Payment flow in 4.4.2.
+You'll get the order id as response. Once you have the order id you can pay your order. If the order amount is equal to 0 or you use your payment gateway, use the flow without payment (ask for activation). Otherwise follow the _Braintree Payments flow_
 
 #### Without Payment Flow
 
@@ -145,13 +143,12 @@ POST /api/v3/payments/no-payment
 }
 ```
 
-#### With Payment Flow
-
-##### Braintree Payments
+##### Braintree Payments flow
 
 You have to integrate [Braintree SDK](https://developers.braintreepayments.com/)
 
-**Note** When testing use credit card numbers contained in this link https://developers.braintreepayments.com/reference/general/testing/ruby#credit-card-numbers 
+**Note** 
+When testing use credit card numbers contained in this link https://developers.braintreepayments.com/reference/general/testing/ruby#credit-card-numbers 
 
 ###### Step 1
 
