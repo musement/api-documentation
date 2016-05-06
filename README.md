@@ -15,11 +15,11 @@ Clicking on the links below you can find all step by step instructions that you 
 
 ### Swagger sandbox tool
 
-[https://api.musement.com/documentation](http://thack.musement.com/documentation)
+[https://thack.musement.com/documentation](http://thack.musement.com/documentation)
 
 ### Endpoint and credentials
 
-* *Endpoint*: thack.musement.com
+* *Endpoint*: https://thack.musement.com
 * *client_id*: 13_3ztmspqziz28kw4k0cskws8ookow480c48gwo0skg8kwk448sc
 * *client_secret*: 4cr08eacreiowswskkk00wgwsg00s84ok4so44goskosww40g8
 
