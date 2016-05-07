@@ -131,6 +131,8 @@ POST /api/v3/orders
 }
 ```
 
+[(See api docs for more details)](https://thack.musement.com/documentation#post--api-v3-orders.{_format})
+
 You'll get the order id as response. Once you have the order id you can pay your order. If the order amount is equal to 0 or you use your payment gateway, use the flow without payment (ask for activation). Otherwise follow the _Braintree Payments flow_
 
 #### Without Payment Flow
@@ -142,17 +144,19 @@ POST /api/v3/payments/no-payment
     "orderId": 123456
 }
 ```
+[(See api docs for more details)](https://thack.musement.com/documentation#post--api-v3-orders-{orderId}-no-payment.{_format})
 
-##### Braintree Payments flow
+
+#### Braintree Payments flow
 
 You have to integrate [Braintree SDK](https://developers.braintreepayments.com/)
 
 **Note** 
-When testing use credit card numbers contained in this link https://developers.braintreepayments.com/reference/general/testing/ruby#credit-card-numbers 
+When testing use credit card numbers contained in this link https://developers.braintreepayments.com/reference/general/testing/php#credit-card-numbers 
 
 ###### Step 1
 
-Get the nonce
+Get [client token](https://developers.braintreepayments.com/reference/request/client-token/generate/php) :
 
 ```
 POST /api/v3/payments/braintree/token
@@ -161,17 +165,19 @@ POST /api/v3/payments/braintree/token
 Response 
 ```
 {
-  "nonce": "eyJ2ZXJzaW9uIjoyLCJhdXRob3JpemF0aW9uRmluZ2VycHJpbnQiOiI3MDVjY2JlZThmZDRkNzI3MW" 
+  "token": "eyJ2ZXJzaW9uIjoyLCJhdXRob3JpemF0aW9uRmluZ2VycHJpbnQiOiI3MDVjY2JlZThmZDRkNzI3MW" 
 }
 ```
+[(See api docs for more details)](https://thack.musement.com/documentation#post--api-v3-payments-braintree-token.{_format})
+
 
 ###### Step 2 
 
-Using Braintree SDK, ask the user for payment information (credit card, paypal etc). Look at the [Braintree documentation](https://developers.braintreepayments.com/) for more details.
+Using Braintree SDK, ask the user for payment information (credit card, paypal etc) and generate "payment method nonce". Look at the [Braintree documentation for custom integrations](https://developers.braintreepayments.com/reference/client-reference/javascript/v2/credit-cards) or [Drop-in Payment UI](https://developers.braintreepayments.com/guides/drop-in/javascript/v2) for more details.
 
 ###### Step 3 
 
-After the user fills out the Braintree payment form, ask us to process the payment and close the order by sending a 
+After the user fills out the Braintree payment form and you have "payment method nonce", ask us to process the payment and close the order by sending a 
 
 ```
 POST /api/v3/payments/braintree/payment
@@ -181,3 +187,4 @@ POST /api/v3/payments/braintree/payment
   "orderId" : 123456
 }
 ```
+[(See api docs for more details)](https://thack.musement.com/documentation#post--api-v3-payments-braintree-payment.{_format})
