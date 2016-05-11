@@ -68,8 +68,8 @@ To change the currency of the prices you must use `X-Musement-Currency`
 
 | Code          | Name               |
 | ------------- |:------------------:|
-| EUR           | Euro (default)     |
-| USD           | US dollar          |
+| EUR           | Euro      |
+| USD           | US dollar (default) |
 | GBP           | Pound sterling     |
 | AED           | Dirham             |
 | SEK           | Swedish krone      |
