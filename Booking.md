@@ -12,7 +12,7 @@ GET /api/v3/events/{id}
 
 ![Booking](http://musement.s3.amazonaws.com/documentation_images/booking.png)
 
-1. Search for the available dates for the _Event_. | [Test it](https://thack.musement.com/documentation#get--api-v3-events-{id}-dates.{_format})
+1. Search for the available dates for the _Event_. | [Test it](https://developers.musement.com/documentation#get--api-v3-events-{id}-dates.{_format})
 
 Returns a list of all days with availabitiy for a specific _Event_ over a period of time.
 

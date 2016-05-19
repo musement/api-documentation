@@ -69,7 +69,7 @@ PATCH /api/v3/carts/{id}
 
 **NOTE**
 - `email`, `firstname`, `lastname` and `country` are all mandatory.
-- For the list of available countries [see](https://thack.musement.com/documentation#get--api-v3-countries.{_format})
+- For the list of available countries [see](https://developers.musement.com/documentation#get--api-v3-countries.{_format})
 
 #### Update/change info in a cart
 

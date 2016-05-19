@@ -8,20 +8,20 @@ The Musement API gives you a set of endpoints to get all the information about o
 
 Clicking on the links below you can find all step by step instructions that you need
 
-1. [Authentication](http://thack.musement.com/thack_api/authentication.html)
-2. [Catalog](http://thack.musement.com/thack_api/catalog.html)
-3. [Booking](http://thack.musement.com/thack_api/booking.html)
-4. [Cart](http://thack.musement.com/thack_api/cart.html)
-5. [Customer](http://thack.musement.com/thack_api/customer.html)
-6. [Search the catalog](http://thack.musement.com/thack_api/search.html)
+1. [Authentication](http://developers.musement.com/developers_api/authentication.html)
+2. [Catalog](http://developers.musement.com/developers_api/catalog.html)
+3. [Booking](http://developers.musement.com/developers_api/booking.html)
+4. [Cart](http://developers.musement.com/developers_api/cart.html)
+5. [Customer](http://developers.musement.com/developers_api/customer.html)
+6. [Search the catalog](http://developers.musement.com/developers_api/search.html)
 
 ### Swagger sandbox tool
 
-[https://thack.musement.com/documentation](http://thack.musement.com/documentation)
+[https://developers.musement.com/documentation](http://developers.musement.com/documentation)
 
 ### Endpoint and credentials
 
-* *Endpoint*: https://thack.musement.com
+* *Endpoint*: https://developers.musement.com
 * *client_id*: 13_3ztmspqziz28kw4k0cskws8ookow480c48gwo0skg8kwk448sc
 * *client_secret*: 4cr08eacreiowswskkk00wgwsg00s84ok4so44goskosww40g8
 
