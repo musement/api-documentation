@@ -8,12 +8,12 @@ The Musement API gives you a set of endpoints to get all the information about o
 
 Clicking on the links below you can find all step by step instructions that you need
 
-1. [Authentication](http://developers.musement.com/developers_api/authentication.html)
-2. [Catalog](http://developers.musement.com/developers_api/catalog.html)
-3. [Booking](http://developers.musement.com/developers_api/booking.html)
-4. [Cart](http://developers.musement.com/developers_api/cart.html)
-5. [Customer](http://developers.musement.com/developers_api/customer.html)
-6. [Search the catalog](http://developers.musement.com/developers_api/search.html)
+1. [Authentication](Authentication.md)
+2. [Catalog](Catalog.md)
+3. [Booking](Booking.md)
+4. [Cart](Cart.md)
+5. [Customer](Customer.md)
+6. [Search the catalog](Search.md)
 
 ### Swagger sandbox tool
 
