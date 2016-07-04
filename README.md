@@ -123,5 +123,5 @@ When a new version is released you can check the documentation and choose to upg
 
 ```
 GET /api/v3/events/1/dates/2016-02-10
-X-Musement-Version: 3.0.0
+X-Musement-Version: 3.1.0
 ```
