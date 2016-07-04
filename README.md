@@ -113,7 +113,7 @@ X-Musement-Currency: USD
 
 ### API Versioning
 
-The current latest version is: `3.0.0`
+The current latest version is: `3.1.0`
 
 When you start a new project that uses _Musement API_ set `X-Musement-Version` to the current latest version. This assures that the model in the response will be stable with time. If you don't set the header the server will always return the latest version. 
 
