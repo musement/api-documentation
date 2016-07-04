@@ -1,6 +1,6 @@
 # Musement API Documentation
 
-Current latest version 3.0.0
+Current latest version 3.1.0
 
 Here you can find documentation to help you start integrating with Musement. Explore our events catalog step by step and easily set up the checkout flow into your app or website.
 
