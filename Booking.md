@@ -135,17 +135,23 @@ POST /api/v3/orders
 
 You'll get the order id as response. Once you have the order id you can pay your order. If the order amount is equal to 0 or you use your payment gateway, use the flow without payment (ask for activation). Otherwise follow the _Braintree Payments flow_
 
-#### Without Payment Flow
+#### No Payment Flow
+
+### Version `3.0.*`
 
 ```
-POST /api/v3/payments/no-payment
+POST /api/v3/orders/{orderId}/no-payment
+```
+
+### Version `3.1.*`
+
+```
+POST /api/v3/payments/no/payment
 
 {
-    "orderId": 123456
+    "order_id": 123456
 }
 ```
-[(See api docs for more details)](https://thack.musement.com/documentation#post--api-v3-orders-{orderId}-no-payment.{_format})
-
 
 #### Braintree Payments flow
 
