@@ -49,7 +49,7 @@ POST /api/v3/carts
 
 #### Add info to a cart
 
-Once a cart is created you can add information sending `PATCH` to the endpoint `/api/v3/carts/{id}`.
+Once a cart is created you can add information sending `PATCH` to the endpoint `/api/v3/carts/{id}`, where `{id}` is replaced with the integer you get from `id` field in response body.
 
 _A call that add customer data to an existing cart_
 ```
