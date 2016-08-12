@@ -12,7 +12,7 @@
 }
 ```
 
- - The endpoint ~POST /orders/{order_id}/no-payment` is deprecated in favour of `POST /api/v3/payments/no/payment`.
+ - The endpoint `POST /orders/{order_id}/no-payment` is deprecated in favour of `POST /api/v3/payments/no/payment`.
  
 The payload is
 
